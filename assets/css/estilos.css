@@ -1,0 +1,374 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans:wdth,wght@91.5,407&family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap');
+
+
+@font-face {
+    font-family: 'tango';
+    src: url('/assets/fonts/tango/TangoSans.ttf') format('truetype'),
+         url('/assets/fonts/tango/TangoSans_Bold.ttf') format('truetype'),
+         url('/assets/fonts/tango/TangoSans_BoldItalic.ttf') format('truetype'),
+         url('/assets/fonts/tango/TangoSans_Italic.ttf') format('truetype')
+}
+
+#name_title {
+    font-family: 'tango', sans-serif;
+}
+
+
+/* Formateamos */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    text-decoration: none;
+    font-family: 'Open Sans', sans-serif;
+}
+
+body {
+    background-color: #a1a1a14a;
+    /* background: #85bf6e71; */
+    margin-left: 60px;
+    margin-right: 5px;
+    margin-top: 140px;
+    transition: margin-left 300ms cubic-bezier(0.785, 0.135, 0.15, 0.86);
+
+}
+
+main {
+    position: relative;
+    top: -70px;
+    padding: 10px;
+}
+
+header {
+    /* overflow-y: scroll; */
+    overflow: hidden;
+    padding: 0px;
+    width: 100%;
+    height: 70px;
+    background: #ffffff;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    /* Distribuye espacio entre elementos */
+    position: fixed;
+    top: 0px;
+    z-index: 200;
+    box-shadow: 0px 3px 10px 0px rgba(0, 0, 0, 0.3);
+}
+
+.icon__menu {
+    width: 50px;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transform: translateX(10px);
+}
+
+.icon__menu img {
+    font-size: 20px;
+    cursor: pointer;
+}
+
+.icon__user {
+    width: 50px;
+    margin-right: 20px;
+    transition: all 300ms cubic-bezier(0.785, 0.135, 0.15, 0.86);
+}
+
+.icon__user img {
+    width: 100%;
+    cursor: pointer;
+}
+
+.empuje__icon {
+    margin-right: 80px;
+} 
+
+@media screen and (max-width: 760px) {
+    .empuje__icon{
+        margin-right: 10px;
+    }
+}
+
+.icon_perfil__move {
+    margin-right: 220px;
+}
+
+@media screen and (max-width: 760px) {
+    .icon_perfil__move{
+        margin-right: 70px;
+    }
+}
+
+.menu__side {
+    width: 60px;
+    height: 100%;
+    background: #ffffff;
+    position: fixed;
+    top: 0;
+    left: 0;
+    color: rgb(0, 0, 0);
+    font-size: 18px;
+    z-index: 300;
+    overflow: hidden;
+    overflow-y: scroll;
+    border-right: 10px solid #ffffff;
+    transition: all 300ms cubic-bezier(0.785, 0.135, 0.15, 0.86);
+}
+
+/*Ocultar scroll para chrome, safari y opera*/
+.menu__side::-webkit-scrollbar {
+    display: none;
+}
+
+/*Ocultar scroll para IE, Edge y Firefox*/
+.menu__side {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
+
+
+.name__page {
+    padding: 15px 40px;
+    display: flex;
+    align-items: center;
+}
+
+.name__page i {
+    width: 20px;
+    margin-right: 20px;
+}
+
+.options__menu {
+    padding: 20px 16px;
+    position: absolute;
+    top: 80px;
+}
+
+.options__menu a {
+    text-decoration: none;
+    color: #000000b2;
+    cursor: default;
+    display: block;
+    position: relative;
+    transition: color 300ms;
+}
+
+.options__menu a:hover {
+    color: rgb(84, 189, 23);
+}
+
+.options__menu .option__enum {
+    padding: 20px 0px;
+    display: flex;
+    align-items: center;
+    position: relative;
+}
+
+.options__menu .option__enum img {
+    width: 30px;
+    margin-right: 20px;
+    cursor: pointer;
+}
+
+.options__menu .option__enum h4 {
+    font-weight: 300;
+    cursor: pointer;
+}
+
+a.selected {
+    color: #000000;
+}
+
+.selected:before {
+    content: '';
+    width: 3px;
+    height: 80%;
+    background: rgb(16, 187, 16);
+    position: absolute;
+    top: 10%;
+    left: -15px;
+}
+
+/*Clases para usar en JavaScript*/
+
+.body_move {
+    margin-left: 200px;
+}
+
+.menu__side_move {
+    width: 200px;
+}
+
+
+@media screen and (max-width: 760px) {
+    .body_move {
+        margin-left: 0px;
+    }
+
+    .menu__side_move {
+        width: 80px;
+        left: -80px;
+    }
+}
+
+/* -----------Nuevo Documento -------------*/
+/* .body__container{
+    padding: 10px;
+} */
+
+.subtitle {
+    background: rgb(255, 255, 255);
+    align-items: center;
+    padding-left: 30px;
+    padding-top: 15px;
+    position: relative;
+    box-shadow: 3px 3px 3px 3px rgba(0.1, 0.1, 0.1, 0.1)
+}
+
+.container {
+    background-color: #ffffff;
+    position: relative;
+    width: 100%;
+}
+
+@media screen and (max-width: 760px) {
+    .main {
+        padding: 0px;
+    }
+
+    .body__container {
+        width: 100%;
+        position: relative;
+    }
+}
+
+/* .container__form{
+    padding: 10px;
+    background-color: #ffffff;
+    position: relative;
+    width: 100%;
+} */
+
+/* .container__form form{
+    background: #ffffff;
+    display: flex;
+} */
+
+.colored-borde {
+    border: px solid #4e4da7;
+    transition: backgrround-color 0.3s;
+}
+
+.colored-border:hover {
+    background-color: #4e4da7;
+    color: white;
+}
+
+/* MODAL */
+#modal::backdrop {
+    background-color: rgba(190, 179, 179, 0.459);
+}
+
+#modal {
+    position: relative;
+    width: 50%;
+    height: 60%;
+    top: 20%;
+    left: 25%;
+    border: none;
+    max-width: 80ch;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.3);
+
+}
+
+.modal_info {
+    padding-left: 30px;
+}
+
+@media screen and (max-width: 760px) {
+    #modal {
+        width: 90%;
+        left: 5%;
+    }
+
+}
+
+/*--------------- Mis Tramites ----------------*/
+
+.container__body {
+    background-color: white;
+    position: static;
+    zoom: 1;
+    padding: 10px;
+    box-shadow: 3px 3px 3px 3px rgba(0.1, 0.1, 0.1, 0.1)
+}
+
+/*--------------- Nuevo Tramite ----------------*/
+input[type="file"] {
+    border: 2px dashed #4e4da7;
+    padding: 10px;
+    width: 100%;
+    cursor: pointer;
+    background-color: #f8f9fa;
+    transition: background-color 0.3s, border-color 0.3s;
+}
+
+/*--------------- Perfil Usuario ----------------*/
+.perfil_usuario {
+    width: 0px;
+    height: 100%;
+    background: #ffffff;
+    color: rgb(0, 0, 0);
+    font-size: 18px;
+    z-index: 300;
+    /* overflow: hidden;
+    overflow-y: scroll; */
+    border-right: 10px solid #ffffff;
+    transition: all 300ms cubic-bezier(0.785, 0.135, 0.15, 0.86);
+    position: fixed;
+    top: 70px;
+    right: 0px;
+}
+
+.header_perfil{
+    padding: 0px 10px;
+    text-align: center;
+    margin: auto;
+}
+
+.icono__content{
+    margin-left: 10px;
+    width: 15px;
+}
+
+.icono__content img{
+    width: 100%;
+}
+
+.option__perfil{
+    padding: 5px;
+    display: flex;
+    align-items: center;
+}
+
+.option__perfil h6{
+    padding-top: 10px;
+    margin-left: 10px;
+}
+.option__perfil h6:hover{
+    color: rgb(84, 189, 23)
+}
+
+.option__perfil_hover:hover{
+    cursor: pointer;
+    /* background-color: #2fc70961; */
+    background-color: #6a6a6a70;
+}
+
+/* Clase para Javascrip */
+.perfil__side_move {
+    width: 250px;
+}
+

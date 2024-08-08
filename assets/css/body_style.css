@@ -1,0 +1,32 @@
+body {
+    /* Establecer la imagen de fondo */
+    background-image: url('/assets/images/MUNICIPIO-OFICIAL3.jpg');
+
+    /* Ajustar la imagen de fondo al cuerpo */
+    background-size: cover;
+
+    /* Centrar la imagen de fondo verticalmente */
+    background-position: center;
+
+    /* Fijar la imagen de fondo para que no se desplace con el contenido */
+    background-attachment: fixed;
+    font-family: Arial, sans-serif;
+}
+
+#content__form {
+    background-color: #202020b6;
+    border-radius: 10px;
+    box-shadow: 3px 3px 3px 3px rgba(0, 0, 0, 0.534)
+}
+
+@font-face {
+    font-family: 'tango';
+    src: url('/assets/fonts/tango/TangoSans.ttf') format('truetype'),
+         url('/assets/fonts/tango/TangoSans_Bold.ttf') format('truetype'),
+         url('/assets/fonts/tango/TangoSans_BoldItalic.ttf') format('truetype'),
+         url('/assets/fonts/tango/TangoSans_Italic.ttf') format('truetype')
+}
+
+#name_title {
+    font-family: 'tango', sans-serif;
+}

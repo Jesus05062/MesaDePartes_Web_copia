@@ -1,0 +1,95 @@
+/* Estilo para el input de archivos PDF */
+input[type="file"] {
+    border: 2px dashed #4e4da7;
+    padding: 10px;
+    width: 100%;
+    cursor: pointer;
+    background-color: #f8f9fa;
+    transition: background-color 0.3s, border-color 0.3s;
+}
+
+input[type="file"]:hover {
+    background-color: #e9ecef;
+    border-color: #343a40;
+}
+
+input[type="file"]::file-selector-button {
+    background-color: #4e4da7;
+    color: white;
+    padding: 8px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+input[type="file"]::file-selector-button:hover {
+    background-color: #343a40;
+}
+
+input[type="file"]:valid {
+    border-color: #198754;
+}
+
+input[type="file"]:invalid {
+    border-color: #dc3545;
+}
+
+/* Agregar transiciones y efectos para el campo de texto */
+input[type="text"], input[type="date"], textarea, select {
+    border: 2px solid #ced4da;
+    padding: 10px;
+    width: 100%;
+    transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+input[type="text"]:focus, input[type="date"]:focus, textarea:focus, select:focus {
+    border-color: #4e4da7;
+    box-shadow: 0 0 5px rgba(78, 77, 167, 0.5);
+}
+
+/* Estilo para botones */
+button {
+    background-color: #4e4da7;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.2s;
+}
+
+button:hover {
+    background-color: #343a40;
+    transform: scale(1.05);
+}
+
+button:disabled {
+    background-color: #adb5bd;
+    cursor: not-allowed;
+}
+
+/* Ajustes para el diseño responsivo */
+@media screen and (max-width: 760px) {
+    body {
+        margin-left: 0;
+        margin-top: 60px;
+    }
+
+    header {
+        height: 60px;
+    }
+
+    .menu__side {
+        height: calc(100% - 60px);
+    }
+
+    .subtitle {
+        padding-left: 15px;
+        padding-top: 10px;
+    }
+
+    .options__menu .option__enum {
+        padding: 10px 0;
+    }
+}

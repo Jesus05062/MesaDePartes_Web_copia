@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Trámite Documentario</title>
+    <!-- <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/gh/habibmhamadi/multi-select-tag@2.0.1/dist/css/multi-select-tag.css"> -->
+
+    <link rel="stylesheet" href="/assets/css/body_style.css">
+    <link rel="stylesheet" href="/bootstrap-5.3.3-dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/bootstrap-5.3.3-dist/js/bootstrap.bundle.min.js">
+
+    <script src="https://kit.fontawesome.com/017fac5817.js" crossorigin="anonymous"></script>
+
+    <!-- Agregar el logo -->
+    <link rel="icon" href="https://munisayan.gob.pe/Rentas/Recursos/logo1.png" type="image/x-icon">
+</head>
+
+<body>
+    <style>
+        label {
+            display: block;
+            font-weight: bold;
+            color: #333;
+        }
+
+        #btn-acceso {
+
+            width: 100%;
+            padding: 10px;
+            margin-top: 10px;
+            margin-bottom: 10px;
+            border-radius: 10px;
+        }
+
+        input[type="number"]::-webkit-inner-spin-button {
+            appearance: none;
+        }
+
+        /* Estilos para centrar el modal */
+        .modal-dialog {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            border: none;
+            background: none;
+            text-align: center;
+        }
+
+        /* Estilo para centrar verticalmente el primer div de clase container */
+        .vertical-center {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+        }
+
+        .form-outline {
+            position: relative;
+            margin-bottom: 1rem;
+        }
+
+        .form-outline input {
+            padding-right: 35px;
+            /* Ajusta el espacio a la derecha para el icono */
+        }
+
+        .toggle-password {
+            position: absolute;
+            top: 70%;
+            right: 10px;
+            transform: translateY(-50%);
+            cursor: pointer;
+        }
+    </style>
+    <div>
+        <div class="container vertical-center" style="margin: auto;">
+            <section class="h-100 gradient-form">
+                <div class="container h-10">
+                    <div class="row d-flex justify-content-center align-items-center h-100">
+                        <div class="col-xl-10">
+                            <div class="card rounded-3 text-black text-white" id="content__form">
+                                <div class="row g-0">
+                                    <div class="col-lg-5 aling-middle" style="margin: auto">
+                                        <div class="card-body mx-md-4">
+
+                                            <div class="text-center">
+                                                <h4 id="name_title" class="mt-1 mb-1 pb-1">Sistema de Tramite
+                                                    documentario</h4>
+                                            </div>
+
+                                            <form>
+                                                <div class="form-outline mb-4">
+                                                    <label class="form-label text-white" for="form2Example11">DNI O
+                                                        RUC:</label>
+                                                    <input name="documento" type="text" id="form2Example11"
+                                                        class="form-control" placeholder="Número"
+                                                        oninput="this.value = this.value.replace(/[^0-9]/g, '')"
+                                                        required />
+                                                </div>
+
+                                                <div class="form-outline mb-2">
+                                                    <label class="form-label text-white"
+                                                        for="id_Password">Contraseña:</label>
+                                                    <input name="password" type="password" id="id_Password"
+                                                        class="form-control" placeholder="Contraseña" required />
+                                                    <i class="toggle-password text-black fas fa-eye-slash"></i>
+                                                </div>
+                                                <script>
+                                                    // JavaScript para alternar la visibilidad de la contraseña
+                                                    const togglePassword = document.querySelector('.toggle-password');
+                                                    const passwordField = document.getElementById('id_Password');
+
+                                                    togglePassword.addEventListener('click', function () {
+                                                        const type = passwordField.getAttribute('type') === 'password' ? 'text' : 'password';
+                                                        passwordField.setAttribute('type', type);
+                                                        this.classList.toggle('fa-eye-slash');
+                                                        this.classList.toggle('fa-eye');
+                                                    });
+                                                </script>
+                                                <div class="text-center pt-1 mb-2 pb-1">
+                                                    <button id="btn-acceso" class="btn btn-success btn-block mb-3"
+                                                        type="submit">Acceso</button>
+                                                    <a class="text-white" href="/validarDocumento.html">Olvidaste
+                                                        tu contraseña?</a>
+                                                </div>
+                                                <div class="d-flex align-items-center justify-content-center pb-4">
+                                                    <p class="mb-0 me-2">No tienes una cuenta?</p>
+
+                                                    <a href="/registro.html" style="margin-left: 10px;">
+                                                        <button type="button" class="btn btn-outline-warning"
+                                                            style="color: white; font-weight: bold;">Registrarse</button>
+                                                    </a>
+                                                </div>
+                                            </form>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-7 align-items-center gradient-custom-2 px-2">
+                                        <div class="text-center mt-4">
+                                            <img src="https://munisayan.gob.pe/Rentas/Recursos/logo1.png"
+                                                style="height: 100px;" alt="logo">
+                                        </div>
+                                        <h4 class="mb-4">Sayán, Nos renovamos para brindarte un mejor servicio</h4>
+                                        <div>
+                                            <div style="text-align: justify;" class="small  mx-md-4">
+
+                                                La Municipalidad Distrital de
+                                                Sayán en su compromiso de seguir mejorando los servicios de atención al
+                                                ciudadano, ha implementado el Sistema de Trámite Documentario, que te
+                                                permitirá acceder a realizar:
+                                            </div>
+                                            <div style="text-align: justify;" class="small mx-md-4">
+                                                - Registro de Trámites y/o solicitudes
+                                            </div>
+                                            <div style="text-align: justify;" class="small mx-md-4">
+                                                - Seguimiento de expediente presentado de manera física y/o virtual.
+                                            </div>
+                                            <div style="text-align: justify;" class="small mx-md-4">
+                                                Ahora podrás revisar desde cualquier lugar, el estado en el que se
+                                                encuentra tu trámite documentario.
+                                                En Sayán nunca fue tan sencillo realizar tus trámites.
+                                            </div>
+                                            <div style="text-align: justify;" class="small mx-md-4">
+                                                <strong>Municipalidad de Distrital de Sayán</strong> – Juntos
+                                                Construimos el Futuro
+                                            </div>
+                                            <br>
+                                            <div class="d-flex p-3"
+                                                style="background-color: rgba(255, 221, 0, 0.52); border-radius: 10px;">
+                                                <div style="border-radius: 10px; width: 140px; margin-right: 10px;">
+                                                    <img style="height: 100%; width: 100%; border-radius: 3px;"
+                                                        src="/assets/images/logo_OTIGD.jpg"
+                                                        alt="Oficina de Tecnología de la Información y Gobierno Digital">
+                                                </div>
+                                                <div class="text-black small" style="text-align: justify;">
+                                                    <div>Contactar con la Oficina de Tecnología de la Información y
+                                                        Gobierno Digital:</div>
+                                                    <strong>
+                                                        helpdesk@munisayan.gob.pe
+                                                    </strong>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-12 aling-middle"
+                                        style="margin: auto; text-align: center; height: 30px;">
+                                        <div
+                                            style="font-size: 10px; width: 100%;height: 20px; background-color: #333; border-radius: 0px 0px 8px 8px; margin-top: 10px;">
+                                            <p><strong>Municipalidad Distrital de Sayán</strong> - CAL. PLAZA DE ARMAS
+                                                SUR MZA. 17 LOTE. 1 LIMA HUAURA SAYAN</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div>
+    <!--------------- Cargando ---------------->
+    <dialog id="loading" class="modal-dialog">
+        <div>
+            <img src="/assets/images/loading.gif" alt="Cargando...">
+        </div>
+    </dialog>
+    <!--------------- Errores ---------------->
+    <dialog class="justify-contentwwa-center p-0" id="modal-error" role="dialog" aria-labelledby="exampleModalLabel"
+        aria-hidden="true" style="border: none; border-radius: 10px; width: 70%; background-color: #33333300;">
+        <div class="col-xl-7 p-3" style="background-color: #f12626ec; border: none; border-radius: 10px;margin: auto;">
+            <div class="modal-content text-white">
+                <div class="modal-header d-flex">
+                    <h5 class="modal-title" id="exampleModalLabel">Se encontraron excepciones
+                    </h5>
+                    <button type="button" id="btn-cerrar-modal-error" class="btn btn-primary ms-auto"
+                        data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <hr>
+                <div class="modal-body text-justify small" id="div-msg-error">
+                </div>
+            </div>
+        </div>
+    </dialog>
+
+    <script src="/assets/js/user/auth.js"></script>
+</body>
+
+</html>

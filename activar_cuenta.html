@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trámite Documentario</title>
+    <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/gh/habibmhamadi/multi-select-tag@2.0.1/dist/css/multi-select-tag.css">
+
+    <link rel="stylesheet" href="bootstrap-5.3.3-dist/css/bootstrap.min.css">
+
+    <link rel="stylesheet" href="/assets/css/body_style.css">
+
+    <script src="https://kit.fontawesome.com/017fac5817.js" crossorigin="anonymous"></script>
+    
+    <!-- Agregar el logo -->
+    <link rel="icon" href="https://munisayan.gob.pe/Rentas/Recursos/logo1.png" type="image/x-icon">
+</head>
+
+<body class="">
+    <style>
+        input[type="number"]::-webkit-inner-spin-button {
+            appearance: none;
+        }
+
+        /* Estilos para centrar el modal */
+        .modal-dialog {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            border: none;
+            background: none;
+            text-align: center;
+        }
+
+        /* Estilo para centrar verticalmente el primer div de clase container */
+        .vertical-center {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+        }
+
+        .form-outline {
+            position: relative;
+            margin-bottom: 1rem;
+        }
+
+        .form-outline input {
+            padding-right: 35px;
+            /* Ajusta el espacio a la derecha para el icono */
+        }
+
+        .toggle-password {
+            position: absolute;
+            top: 71%;
+            right: 20px;
+            transform: translateY(-50%);
+            cursor: pointer;
+        }
+    </style>
+    <div class="container vertical-center" id="activar_cuenta">
+        <div class="">
+            <!------------------Titulo------------ -->
+            <div class="col-md-12 text-center mb-3 mt-2">
+                <a>
+                    <img alt="logo TD" src="assets/images/image.png" class="theme-logo">
+                </a>
+                <h4 id="name_title">Trámite Documentario</h4>
+            </div>
+            <!-- -------------Formulario---------- -->
+            <div class="row justify-content-center text-white" id="content__form">
+                <div class="col-12 pt-4 text-center" style="width: 100%;">
+                    <h2 class=" text-white">
+                        Hola <strong id="user-name"></strong>
+                    </h2>
+                    <div class="" style="font-size: 18px; font-weight: 100;">
+                        Estas a un paso de crear tu cuenta, para finalizar ingresa la siguiente
+                        información:
+                    </div>
+                </div>
+                <div class="container row pt-2 px-0 justify-content-center">
+                    <form method="post" class="row">
+                        <div class="col-md-6" id="id_nacimiento">
+                            <label for="fechanacimiento" class="form-label text-white" style="font-weight: 100;">Fecha
+                                de Nacimiento:</label>
+                            <input type="date" name="nacimiento" max="2006-12-25" class="form-control"
+                                autofocus="autofocus" placeholder="Fecha de nacimiento" required id="fechanacimiento">
+                        </div>
+                        <div class="col-md-6" id="id_direccion">
+                            <label for="direccion" class="form-label text-white"
+                                style="font-weight: 100;">Direccion:</label>
+                            <input type="text" name="direccion" maxlength="100" class="form-control"
+                                placeholder="Dirección" required id="direccion">
+
+                        </div>
+                        <div class="col-md-4 pt-2 pt-md-1">
+                            <label for="id_departamento" class="form-label text-white"
+                                style="font-weight: 100;">Departamento:</label>
+                            <select name="departamento" class="form-control selectpicker"
+                                data-minimum-results-for-search="-1" style="width: 100%" data-minimum-input-length="0"
+                                placeholder="Departamento" id="id_departamento">
+                            </select>
+                        </div>
+                        <div class="col-md-4 pt-2 pt-md-1">
+                            <label for="id_provincia" class="form-label text-white"
+                                style="font-weight: 100;">Provincia:</label>
+                            <select name="provincia" class="form-control selectpicker"
+                                data-minimum-results-for-search="-1" style="width: 100%" data-minimum-input-length="0"
+                                placeholder="Provincia" id="id_provincia">
+                            </select>
+                        </div>
+                        <div class="col-md-4 pt-2 pt-md-1">
+                            <label for="id_distrito" class="form-label text-white"
+                                style="font-weight: 100;">Distrito:</label>
+                            <select name="distrito" class="form-control selectpicker"
+                                data-minimum-results-for-search="-1" style="width: 100%" data-minimum-input-length="0"
+                                placeholder="Distrito" id="id_distrito">
+                            </select>
+                        </div>
+                        <div class="row filaocultable fila-3 pt-md-1" style="display: none">
+                            <div class="col-12">
+                                <input type="text" name="razonsocial" maxlength="100" class="form-control"
+                                    placeholder="Razón Social" id="id_razonsocial">
+
+                            </div>
+                        </div>
+                        <div class="col-6 pt-md-1 ">
+                            <label for="id_contraseña" class="form-label text-white"
+                                style="font-weight: 100;">Contraseña:</label>
+                            <input type="password" name="Password" maxlength="254" class="form-control"
+                                placeholder="Contraseña" required id="id_contraseña">
+                        </div>
+
+                        <div class="col-6 pt-md-1 form-outline">
+                            <label for="id_repetircontraseña" class="form-label text-white"
+                                style="font-weight: 100;">Repetir Contraseña:</label>
+                            <input type="password" name="repetirpassword" maxlength="254" class="form-control"
+                                placeholder="Repetir Contraseña" required id="id_repetircontraseña">
+                            <i class="toggle-password text-black fas fa-eye-slash"></i>
+
+                        </div>
+                        <script>
+                            // JavaScript para alternar la visibilidad de la contraseña
+                            const togglePassword = document.querySelector('.toggle-password');
+                            const passwordField = document.getElementById('id_repetircontraseña');
+
+                            togglePassword.addEventListener('click', function () {
+                                const type = passwordField.getAttribute('type') === 'password' ? 'text' : 'password';
+                                passwordField.setAttribute('type', type);
+                                this.classList.toggle('fa-eye-slash');
+                                this.classList.toggle('fa-eye');
+                            });
+                        </script>
+                        <div class="col-sm-12 pt-md-1">
+                            <div class="primary-checkbox" style="color: white;">
+                                <label>
+                                    <span>*</span> Su contraseña no puede asemejarse tanto a su otra
+                                    información personal.
+                                </label>
+                            </div>
+                        </div>
+                        <div class="col-sm-12">
+                            <div class="primary-checkbox" style="color: white;">
+                                <label>
+                                    <span>*</span> Su contraseña debe contener al menos 8 caracteres.
+                                </label>
+                            </div>
+                        </div>
+                        <div class="col-sm-12">
+                            <div class="primary-checkbox" style="color: white;">
+                                <label>
+                                    <span>*</span> Su contraseña no puede ser una clave utilizada
+                                    comúnmente.
+                                </label>
+                            </div>
+                        </div>
+                        <div class="col-sm-12">
+                            <div class="primary-checkbox" style="color: white;">
+                                <label>
+                                    <span>*</span> Su contraseña no puede ser completamente numérica.
+                                </label>
+                            </div>
+                        </div>
+
+                        <div class="text-center">
+                            <button class="btn btn-lg btn-success btn-rounded mb-4 mt-4" type="submit">
+                                Activar Cuenta
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <br>
+            <footer id="footer" class="footer text-center" th:fragment="footer">
+                <div class="copyright">
+                    &copy; Copyright <strong><span>Trámite Documentario</span></strong>. All Rights Reserved
+                </div>
+                <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
+                    integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4"
+                    crossorigin="anonymous"></script>
+            </footer>
+        </div>
+    </div>
+
+    <!--------------- Cargando ---------------->
+    <dialog id="loading" class="modal-dialog">
+        <div>
+            <img src="/assets/images/loading.gif" alt="Cargando...">
+        </div>
+    </dialog>
+
+    <!-- -------------------Mensage de cuenta activada----------------- -->
+    <div class="container vertical-center" id="successMsg" style="display: none;">
+        <div class="">
+            <!------------------Titulo------------ -->
+            <div class="col-md-12 text-center mb-3 mt-2">
+                <a>
+                    <img alt="logo TD" src="assets/images/image.png" class="theme-logo">
+
+                </a>
+                <h4>Trámite Documentario</h4>
+            </div>
+            <!-- -------------Mensaje---------- -->
+            <div class="row justify-content-center" id="content__form">
+
+                <div class="col-12 mb-4 text-center text-white">
+                    <div class="col-12 pt-4">
+                        <h2 class="text-center text-white">
+                            Activación de cuenta completada
+                        </h2>
+                    </div>
+                    <br>
+                    <div>
+                        <p style="font-size: 20px;">
+                            Estimado usuario,
+                        </p>
+                        <p style="font-size: 20px;">
+                            Nos complace informarte que tu cuenta ha sido activada exitosamente. Todos los datos
+                            proporcionados han sido verificados y confirmados.
+                        </p>
+                        <p style="font-size: 20px;">
+                            A partir de este momento, puedes comenzar a disfrutar de todos los beneficios y servicios
+                            que ofrece nuestro sistema de trámite documentario.
+                        </p>
+                    </div>
+                    <hr>
+                    <div>
+                        <p style="color: #e2d5d5;">
+                            • Si tienes alguna consulta o requerimiento adicional, no dudes en contactar con nuestro
+                            equipo de soporte.
+                        </p>
+                        <p style="color: #e2d5d5;">
+                            • Recuerda que puedes acceder a tus documentos presentados y realizar seguimiento de ellos a
+                            través de la sección "Mis Trámites".
+                        </p>
+                    </div>
+                    <a href="login.html">
+                        <button class="btn btn-primary mt-3" style="font-size: 25px;">
+                            Ir a Inicio
+                        </button>
+                    </a>
+                </div>
+
+            </div>
+            <footer id="footer" class="footer text-center" th:fragment="footer">
+                <div class="copyright">
+                    &copy; Copyright <strong><span>Trámite Documentario</span></strong>. All Rights Reserved
+                </div>
+                <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
+                    integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4"
+                    crossorigin="anonymous"></script>
+            </footer>
+        </div>
+
+    </div>
+
+    <!---------------  Errores ---------------->
+    <dialog class="justify-content-center p-0" id="modal-error" role="dialog" aria-labelledby="exampleModalLabel"
+        aria-hidden="true" style="border: none; border-radius: 10px; width: 70%; background-color: #33333300;">
+        <div class="col-xl-7 p-3" style="background-color: #f12626ec; border: none; border-radius: 10px;margin: auto;">
+            <div class="modal-content text-white">
+                <div class="modal-header d-flex">
+                    <h5 class="modal-title" id="exampleModalLabel">Se encontraron excepciones
+                    </h5>
+                    <button type="button" id="btn-cerrar-modal-error" class="btn btn-primary ms-auto"
+                        data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <hr>
+                <div class="modal-body text-justify small" id="div-msg-error">
+                </div>
+            </div>
+        </div>
+    </dialog>
+
+    <!---------------  Error Fatal ---------------->
+    <dialog class="" id="modal-error-fatal" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true"
+        style="background-color: #f12626ec; border: none; border-radius: 10px; width: 70%;">
+        <div class="" role="document">
+            <div class="modal-content text-white">
+                <div class="modal-header d-flex">
+                    <h5 class="modal-title" id="exampleModalLabel">Error Fatal</h5>
+                </div>
+                <hr>
+                <div class="modal-body text-justify small" id="div-msg-error-fatal">
+                </div>
+            </div>
+        </div>
+    </dialog>
+
+    <script src="/assets/js/func_activar_cuenta.js"></script>
+    <script src="assets/js/user/activar_cuenta.js"></script>
+
+</body>
+
+</html>

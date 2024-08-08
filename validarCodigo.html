@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trámite Documentario</title>
+    <link rel="stylesheet" href="/assets/css/body_style.css">
+    <link rel="stylesheet" href="/bootstrap-5.3.3-dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/bootstrap-5.3.3-dist/js/bootstrap.bundle.min.js">
+
+    <script src="https://kit.fontawesome.com/017fac5817.js" crossorigin="anonymous"></script>
+
+    <!-- Agregar el logo -->
+    <link rel="icon" href="https://munisayan.gob.pe/Rentas/Recursos/logo1.png" type="image/x-icon">
+</head>
+
+<body>
+    <style>
+        label {
+            display: block;
+            font-weight: bold;
+            color: #333;
+        }
+
+        #btn-acceso {
+
+            width: 100%;
+            padding: 10px;
+            margin-top: 10px;
+            margin-bottom: 10px;
+            border-radius: 10px;
+        }
+
+        input[type="number"]::-webkit-inner-spin-button {
+            appearance: none;
+        }
+
+        /* Estilos para centrar el modal */
+        .modal-dialog {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            border: none;
+            background: none;
+            text-align: center;
+        }
+
+        /* Estilo para centrar verticalmente el primer div de clase container */
+        .vertical-center {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+        }
+
+        .form-outline {
+            position: relative;
+            margin-bottom: 1rem;
+        }
+
+        .form-outline input {
+            padding-right: 35px;
+            /* Ajusta el espacio a la derecha para el icono */
+        }
+
+        .toggle-password {
+            position: absolute;
+            top: 50%;
+            right: 10px;
+            transform: translateY(-50%);
+            cursor: pointer;
+        }
+    </style>
+    <div>
+        <div class="container vertical-center">
+            <section class="h-100 gradient-form">
+                <div class="container h-100">
+                    <div class="row d-flex justify-content-center align-items-center h-100 my-3">
+                        <div class="col-xl-7">
+                            <div class="card rounded-3 text-black text-white" id="content__form">
+                                <div class="row g-0">
+
+                                    <div class="col-lg-12">
+                                        <div class="card-body p-md-5 mx-md-4">
+                                            <div class="text-center">
+
+                                                <h4 class="mt-1 mb-1 pb-1">Validar Código</h4>
+                                            </div>
+
+                                            <form>
+                                                <p class="text-center" style="font-size: 20px;">Hemos enviando un correo
+                                                    electrónico a
+                                                    <strong id="user-email"></strong>
+                                                    con su código de verificación.
+                                                </p>
+                                                <script>
+                                                    const userEmail = localStorage.getItem('email');
+                                                    document.getElementById('user-email').textContent = userEmail;
+                                                </script>
+                                                <div
+                                                    class="form-outline mb-4 text-center d-flex flex-column align-items-center">
+                                                    <!-- Temporizador -->
+                                                    <div id="timer" class="mb-2"></div>
+                                                    <label class="form-label text-white" for="id_codigo">Codigo de
+                                                        verificación:</label>
+                                                    <input style="width: 40%;" name="codigo" type="text" id="id_codigo"
+                                                        class="form-control" placeholder=""
+                                                        oninput="this.value = this.value.replace(/[^a-zA-Z0-9]/g, '').toUpperCase()"
+                                                        required />
+                                                </div>
+                                                <!-- <div class="d-flex align-items-center justify-content-center pb-4 mt-4">
+
+                                                    <a href="/cambiarContrasena.html" style="margin-left: 10px;">
+                                                        <button type="button" class="btn btn-outline-warning"
+                                                            style="color: white; font-weight: bold;">Validar
+                                                            Codigo</button>
+                                                    </a>
+                                                </div> -->
+                                                <hr>
+                                                <p style="font-size: 15px;">Introduzca y confirme su nueva contraseña:
+                                                </p>
+                                                <div class="form-outline mb-2">
+
+                                                    <input name="Password" type="password" id="id_Password"
+                                                        class="form-control" placeholder="Nueva Contraseña" required />
+                                                </div>
+                                                <div class="col-sm-12 text-white mb-2">
+                                                    <div>
+                                                        <small>
+                                                            <span>*</span> Su contraseña debe contener, al menos un
+                                                            símbolo ($@$!%*#?&).
+                                                        </small>
+                                                    </div>
+                                                    <div>
+                                                        <small>
+                                                            <span>*</span> Su contraseña no puede asemejarse tanto a su
+                                                            otra
+                                                            información personal.
+                                                        </small>
+                                                    </div>
+                                                    <div>
+                                                        <small>
+                                                            <span>*</span> Su contraseña debe contener al menos 8
+                                                            caracteres.
+                                                        </small>
+                                                    </div>
+                                                    <div>
+                                                        <small>
+                                                            <span>*</span> Su contraseña no puede ser una clave
+                                                            utilizada
+                                                            comúnmente.
+                                                        </small>
+                                                    </div>
+                                                    <div>
+                                                        <small>
+                                                            <span>*</span> Su contraseña no puede ser completamente
+                                                            numérica.
+                                                        </small>
+                                                    </div>
+
+                                                </div>
+                                                <div class="form-outline mb-2">
+                                                    <input name="confirmPassword" type="password"
+                                                        id="id_confirmPassword" class="form-control"
+                                                        placeholder="Confirmar Nueva Contraseña" required />
+                                                    <i class="toggle-password text-black fas fa-eye-slash"></i>
+                                                </div>
+                                                <script>
+                                                    // JavaScript para alternar la visibilidad de la contraseña
+                                                    const togglePassword = document.querySelector('.toggle-password');
+                                                    const passwordField = document.getElementById('id_confirmPassword');
+
+                                                    togglePassword.addEventListener('click', function () {
+                                                        const type = passwordField.getAttribute('type') === 'password' ? 'text' : 'password';
+                                                        passwordField.setAttribute('type', type);
+                                                        this.classList.toggle('fa-eye-slash');
+                                                        this.classList.toggle('fa-eye');
+                                                    });
+                                                </script>
+                                                <div class="text-center pt-1 mb-2 pb-1">
+                                                    <button id="btn-acceso" class="btn btn-success btn-block mb-3"
+                                                        type="submit">Restablecer Contraseña</button>
+                                                </div>
+                                            </form>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div>
+
+    <!--------------- Cargando ---------------->
+    <dialog id="loading" class="modal-dialog">
+        <div>
+            <img src="/assets/images/loading.gif" alt="Cargando...">
+        </div>
+    </dialog>
+
+    <!---------------  Errores ---------------->
+    <dialog class="justify-contentwwa-center p-0" id="modal-error" role="dialog" aria-labelledby="exampleModalLabel"
+        aria-hidden="true" style="border: none; border-radius: 10px; width: 70%;background-color: #33333300;">
+        <div class="col-xl-7 p-3" style="background-color: #f12626ec; border: none; border-radius: 10px;margin: auto;">
+            <div class="modal-content text-white">
+                <div class="modal-header d-flex">
+                    <h5 class="modal-title" id="exampleModalLabel">Se encontraron excepciones
+                    </h5>
+                    <button type="button" id="btn-cerrar-modal-error" class="btn btn-primary ms-auto"
+                        data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <hr>
+                <div class="modal-body text-justify small" id="div-msg-error">
+                </div>
+            </div>
+        </div>
+    </dialog>
+
+    <script src="/assets/js/user/validar_codigo.js"></script>
+
+</body>
+
+</html>

@@ -1,0 +1,517 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trámite Documentario</title>
+    <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/gh/habibmhamadi/multi-select-tag@2.0.1/dist/css/multi-select-tag.css">
+    <link rel="stylesheet" href="bootstrap-5.3.3-dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="assets/css/estilos.css">
+    <script src="https://kit.fontawesome.com/017fac5817.js" crossorigin="anonymous"></script>
+
+    <!-- Agregar el logo -->
+    <link rel="icon" href="https://munisayan.gob.pe/Rentas/Recursos/logo1.png" type="image/x-icon">
+</head>
+
+<body id="body">
+    <style>
+        /* Estilos para centrar el modal */
+        .modal-dialog {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            border: none;
+            background: none;
+            text-align: center;
+        }
+
+        #id_loading {
+            background-color: rgba(128, 128, 128, 0.305);
+            padding: 5px;
+        }
+
+        #modal-error {
+            margin: auto;
+        }
+
+        #modal-message-success-update {
+            margin: auto;
+        }
+
+        #id_detalle_seguimiento {
+            border: none;
+            background: none;
+            width: 70%;
+            /* background-color: rgb(76, 73, 73); */
+        }
+
+        @media screen and (max-width: 760px) {
+            #id_detalle_seguimiento {
+                width: 100%;
+            }
+        }
+
+        .section-detail {
+            padding-top: 5px;
+        }
+
+        .content__text {
+            padding: 4px;
+            background-color: rgb(231, 213, 213);
+            border-radius: 7px;
+            border: solid 3px rgb(172, 164, 164);
+            font-size: 14px;
+        }
+
+        .content__text_small {
+            overflow-x: auto;
+        }
+
+        .content__text_big {
+            overflow-y: auto;
+            /* Activar el scroll vertical si es necesario */
+            height: 100px;
+        }
+
+        .gradient-custom {
+            background: linear-gradient(45deg, #ff6f61, #ff9966, #2e53f8);
+            color: white;
+        }
+    </style>
+    <header>
+        <div class="icon__menu">
+            <img src="/assets/images/hamburguesa.png" alt="Menu Icon" id="btn_open">
+            <!-- <i class="fas fa-bars" id="btn_open"></i> -->
+        </div>
+        <div id="id_icon_user" class="icon__user empuje__icon">
+            <img src="assets/images/perfil64px.png" alt="User Icon" id="btn_open_perfil">
+        </div>
+    </header>
+    <div class="menu__side" id="menu_side">
+
+        <div class="name__page">
+            <i class="fas fa-brasas" title="Mis Documentos"></i>
+            <p id="name_title" style="font-size: 18px;">Trámite Documentario</p>
+        </div>
+
+        <div class="options__menu">
+            <a href="/misTramites.html" class="selected">
+                <div class="option__enum">
+                    <img src="/assets/images/documento.png" alt="" title="Mis trámites">
+                    <!-- <i class="fas fa-file" title="Mis Tramites"></i> -->
+                    <h6>Mis Trámites</h6>
+                </div>
+            </a>
+        </div>
+    </div>
+    <main id="main">
+        <div class="p-1">
+            <h3><span>Mis trámites</span></h3>
+        </div>
+        <div class="container__body">
+            <div class="widget-content-area">
+                <div class="row d-flex">
+                    <div class="col-md-12 col-lg-4 text-center text-md-left">
+                        <a href="/nuevoTramite.html" style="color: white; text-decoration: none;"><button
+                                class="btn btn-warning btn-rounded mb-3 mb-lg-0">Nuevo Trámite</button></a>
+                    </div>
+                    <div class="col-md-6 col-lg-4 mb-2">
+                        <div class="form-group">
+                            <div class="form-control search">
+                                <i class="fas fa-calendar"></i>
+                                &nbsp;
+                                <select id="filterDate" class="form-control">
+                                    <option value="all">Todo</option>
+                                    <option value="7">Últimos 7 Días</option>
+                                    <option value="30">Últimos 30 Días</option>
+                                    <option value="month">Este Mes</option>
+                                    <option value="range">Rango de Fechas</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-4 mb-2" id="dateRangeInputs" style="display: none;">
+                        <div class="form-group">
+                            <input id="startDate" type="date" class="form-control mb-2" placeholder="Fecha Inicial">
+                            <input id="endDate" type="date" class="form-control" placeholder="Fecha Final">
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-4 mb-2">
+                        <div class="form-group search">
+                            <input id="searchSolicitud" type="text" class="form-control"
+                                placeholder="Buscar por Número de Solicitud o Expediente">
+                        </div>
+                    </div>
+                </div>
+                <div id="id_misTramites">
+                    <div class="table-responsive mb-2 mb-md-0">
+                        <table class="table table-bordered table-hover table-striper mb-3">
+                            <thead>
+                                <tr class="text-center">
+                                    <th class="text-primary" style="max-width: 140px;">Solicitud</th>
+                                    <th class="text-primary">Documento</th>
+                                    <th class="text-primary">Asunto</th>
+                                    <th class="text-primary">Fecha solicitud</th>
+                                    <th class="text-primary">Destino</th>
+                                    <th class="text-primary" style="max-width: 160px;">Expediente</th>
+                                    <th class="text-primary" style="min-width: 100px;">Estado</th>
+                                    <th class="text-primary">Estado Fecha</th>
+                                    <th class="text-primary" style="max-width: 60px;">Doc</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td colspan="8">No se encontraron documentos</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-2 text-center text-md-left mb-2 mb-md-0 small">
+                            <button id="btn_refresh"
+                                class="btn btn-outline-dark rounded-circle btn-rounded p-0 d-inline-block mr-1 px-1">
+                                <i class="fa fa-refresh"></i>
+                            </button>
+                            Refrescar Tabla
+                        </div>
+                        <div class="col-md-10 d-flex justify-content-center fy-content-md-end">
+
+                        </div>
+                    </div>
+                </div>
+                <!--------------- Cargando ---------------->
+                <div id="id_loading" class="text-center" style="display: none;">
+                    <div class="widget-content-area">
+
+                        <div style="width: 90px; margin: auto;">
+                            <img src="/assets/images/loading_grey.gif" style="width: 100%;" alt="Cargando...">
+                        </div>
+                        <p>Cargando... Espere un momento.</p>
+
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!--------------- Perfil Usuario---------------->
+    <div id="id_perfil" class="perfil_usuario" style=" box-shadow: -3px 0px 3px 0px rgba(0.1, 0.1, 0.1, 0.1);">
+        <div style="width: 90%; margin: auto;">
+            <div class="option__perfil text-center">
+                <img src="" alt="">
+            </div>
+            <div class="header_perfil">
+                <strong id="id_documento_Field"></strong>
+            </div>
+            <div class="header_perfil">
+                <strong id="id_nombre_Field" class="text-primary"></strong>
+            </div>
+            <hr>
+            <div id="id_editarPerfil" class="option__perfil option__perfil_hover">
+                <div class="icono__content">
+                    <img src="/assets/images/gente.png" alt="">
+                </div>
+                &nbsp;
+                <h6>Perfil</h6>
+            </div>
+            <hr>
+            <div id="btn_cerrar_sesion" class="option__perfil option__perfil_hover">
+                <div class="icono__content">
+                    <img src="/assets/images/Log-off.png" alt="">
+                </div>
+                &nbsp;
+                <h6>Cerrar Sesion</h6>
+            </div>
+        </div>
+    </div>
+
+    <!--------------------------- Tabla Seguimiento --------------------------->
+    <dialog class="m-auto" id="tabla-seguimiento-one"
+        style="border: none;background-color: rgb(76, 73, 73); width: 100%;">
+        <div class="p-3 modal-content">
+            <div id="id_misTramites">
+                <div class="modal-header d-flex p-2">
+                    <h5 class="modal-title text-white" id="exampleModalLabel">Seguimiento de Solicitud Nº <span
+                            class="text-primary" id="id_num_solicitud">;</span>
+                    </h5>
+                    <button type="button" id="btn-cerrar-tabla-seguimiento-one" class="btn btn-primary ms-auto"
+                        data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="table-responsive mb-2 mb-md-0">
+                    <table class="table table-dark table-hover mb-3">
+                        <thead>
+                            <tr class="text-center">
+                                <th class="text-primary">Remitente</th>
+                                <th class="text-primary" style="width: 250px;">Asunto</th>
+                                <th class="text-primary">Destino</th>
+                                <th class="text-primary" style="width: 250px;">Respuesta</th>
+                                <th class="text-primary">Estado</th>
+                                <th class="text-primary">Observacion</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </dialog>
+
+    <!--------------------------- Detalles de Seguimiento --------------------------->
+    <dialog class="m-auto" id="id_detalle_seguimiento">
+        <div class="card rounded-3 p-2">
+            <div class="modal-header d-flex p-2">
+                <h5 class="modal-title text-primary" id="">Observacion a Detalle
+                </h5>
+                <button type="button" id="btn-cerrar-detalle-seguimiento" class="btn btn-primary ms-auto"
+                    data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="row g-0 py-2">
+                <div class="col-lg-6 align-items-center px-2" style="margin: auto;">
+                    <div class="col-12 justify-content-start d-flex section-detail">
+                        <div class="col-5">
+                            <label class=""><strong>Fecha Derivación:</strong></label>
+                            <div class="content__text content__text_small">
+                                <label id="id_Fecha_Derivacion"></label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12 justify-content-start d-flex section-detail">
+                        <div class="col-10">
+                            <label class=""><strong>Unidad Remitente:</strong></label>
+                            <div class="content__text content__text_small">
+                                <label id="id_Unidad_Remitente"></label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12 justify-content-center d-flex section-detail">
+                        <div class="col-12">
+                            <label class=""><strong>Asunto:</strong></label>
+                            <div class="content__text content__text_big">
+                                <label id="id_Asunto">
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6 align-items-center px-2">
+                    <!-- <div class="col-12 justify-content-end d-flex section-detail">
+                        <div class="col-5">
+                            <label class=""><strong>Fecha Recepción:</strong></label>
+                            <div class="content__text content__text_small">
+                                <label id="id_Fecha_Recepcion"></label>
+                            </div>
+                        </div>
+                    </div> -->
+
+                    <div class="col-12 justify-content-end d-flex section-detail" style="margin-top: 65px;">
+                        <div class="col-10">
+                            <label class=""><strong>Unidad de Destino:</strong></label>
+                            <div class="content__text content__text_small">
+                                <label id="id_Unidad_Destino"></label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12 justify-content-center d-flex section-detail">
+                        <div class="col-12">
+                            <label class=""><strong>Respuesta:</strong></label>
+                            <div class="content__text content__text_big">
+                                <label id="id_Respuesta"></label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-12 align-items-center px-2">
+                    <div class="col-12 justify-content-center d-flex section-detail">
+                        <div class="col-12">
+                            <label class=""><strong>Observacion:</strong></label>
+                            <div class="content__text" style="overflow-y: auto; height: 100px;">
+                                <label id="id_Observación"></label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div id="id_campo_subsanar" class="col-lg-12 align-items-center px-2" style="display: none;">
+                    <form id="form" action="">
+                        <div class="col-12 justify-content-center d-flex section-detail">
+                            <div class="row col-12">
+                                <div class="col-md-6 mt-2">
+                                    <label for="id_archivo_subsanar" class="form-label"><b>Archivo (PDF máx 5 MB)<span
+                                                class="text-danger small">*</span> :</b></label>
+                                    <input type="file" class="form-control" accept="application/pdf"
+                                        id="id_archivo_subsanar" required>
+                                    <strong><p id="nombre_archivo_mostrado" style="display: none;">Archivo Cargado: <span id="nombre_archivo"></span></p></strong>
+                                </div>
+                                <div class="col-md-6 mt-2">
+                                    <label for="id_anexo_subsanar" class="form-label"><b>URL del Anexo</b>:</label>
+                                    <input id="id_anexo_subsanar" type="text" class="form-control"
+                                        style="height: 50px;">
+                                </div>
+                                <div class="col-sm-8 col-md-3">
+                                    <label for="id_tipoDocumento_subsanar" class="form-label"><b>Tipo de
+                                            Documento</b>:</label>
+                                    <select class="form-select selectpicker" name="" id="id_tipoDocumento_subsanar">
+                                        <option value="">Seleccione...</option>
+                                    </select>
+                                </div>
+                                <div class="col-sm-4 col-md-2">
+                                    <label for="id_documento_subsanar" class="form-label"><b>Documento</b>:</label>
+                                    <input type="text" class="form-control" maxlength="50" id="id_documento_subsanar"
+                                        placeholder="0">
+                                </div>
+                                <div class="col-lg-12 align-items-center px-2">
+                                    <div class="col-12 justify-content-center d-flex section-detail">
+                                        <div class="col-12">
+                                            <label for="id_respuesta_subsanar" class=""><strong>Respuesta<span
+                                                        class="text-danger small">*</span> :</strong></label>
+                                            <textarea id="id_respuesta_subsanar" class="form-control" name="asunto"
+                                                id="" cols="40" rows="2" maxlength="1000" style="resize: none;"
+                                                required></textarea>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-12 mt-4 mb-4 d-flex justify-content-center">
+                                    <div class="col-sm-4">
+                                        <button id="boton_subsanar" type="submit"
+                                            class="btn btn-primary gradient-custom"
+                                            style="width: 100%; border: none;">Subsanar Documentos</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+
+                </div>
+            </div>
+        </div>
+        </div>
+    </dialog>
+
+    <!--------------------------- Editar Datos --------------------------->
+    <dialog class="" id="modal-perfil-datos"
+        style="background-color: #ffffff; border: none; border-radius: 10px; position: fixed; margin: auto; max-width: 900px; padding: 20px;">
+        <div class="" role="document">
+            <div class="">
+                Actualizar Datos Principales
+                <hr>
+                <form action="">
+
+                    <fieldset class="data-user p-3">
+                        <div class="row d-flex justify-content-center ">
+                            <div class="col-md-4 pt-2 pt-md-1">
+                                <label for="id_departamento_Field" class="form-label"><b>Departamento<span
+                                            class="text-danger small">*</span></b></label>
+                                <select name="departamento" class="form-control selectpicker"
+                                    data-minimum-results-for-search="-1" style="width: 100%"
+                                    data-minimum-input-length="0" placeholder="Departamento" id="id_departamento_Field"
+                                    required>
+                                </select>
+                            </div>
+                            <div class="col-md-4 pt-2 pt-md-1">
+                                <label for="id_provincia_Field" class="form-label"><b>Provincia<span
+                                            class="text-danger small">*</span> :</b></label>
+                                <select name="provincia" class="form-control selectpicker"
+                                    data-minimum-results-for-search="-1" style="width: 100%"
+                                    data-minimum-input-length="0" placeholder="Provincia" id="id_provincia_Field"
+                                    required>
+                                </select>
+                            </div>
+                            <div class="col-md-4 pt-2 pt-md-1">
+                                <label for="id_distrito_Field" class="form-label"><b>Distrito<span
+                                            class="text-danger small">*</span> :</b></label>
+                                <select name="distrito" class="form-control selectpicker"
+                                    data-minimum-results-for-search="-1" style="width: 100%"
+                                    data-minimum-input-length="0" placeholder="Distrito" id="id_distrito_Field"
+                                    required>
+                                </select>
+                            </div>
+                            <div class="col-sm-6">
+                                <label for="id_direccion_Field" class="form-label"><b>Dirección<span
+                                            class="text-danger small">*</span> :</b></label>
+                                <input type="text" id="id_direccion_Field" class="form-control" required>
+                            </div>
+                            <div class="col-sm-3">
+                                <label for="id_telefono_Field" class="form-label"><b>Telefono<span
+                                            class="text-danger small">*</span> :</b></label>
+                                <input type="text" name="" id="id_telefono_Field" class="form-control"
+                                    oninput="this.value = this.value.replace(/[^0-9]/g, '').slice(0, 9)" required>
+                            </div>
+                            <div class="col-sm-3">
+                                <label for="id_email_Field" class="form-label"><b>Correo<span
+                                            class="text-danger small">*</span> :</b></label>
+                                <input type="email" name="email" maxlength="254" class="form-control"
+                                    placeholder="Ejemplo@gmail.com" required id="id_email_Field">
+                            </div>
+                        </div>
+                    </fieldset>
+
+                    <div class="text-center  pt-2">
+                        <button type="submit" id="btn_actualizar_datos" class="btn btn-primary">
+                            Actualizar
+                        </button>
+                    </div>
+                </form>
+
+            </div>
+        </div>
+    </dialog>
+
+    <!---------------  Errores ---------------->
+    <dialog class="justify-content-center p-0" id="modal-error" role="dialog" aria-labelledby="exampleModalLabel"
+        aria-hidden="true" style="border: none; border-radius: 10px; width: 70%;background-color: #33333300;">
+        <div class="col-xl-7 p-3" style="background-color: #f12626ec; border: none; border-radius: 10px;margin: auto;">
+            <div class="modal-content text-white">
+                <div class="modal-header d-flex">
+                    <h5 class="modal-title" id="exampleModalLabel">Se encontraron excepciones
+                    </h5>
+                    <button type="button" id="btn-cerrar-modal-error" class="btn btn-primary ms-auto"
+                        data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <hr>
+                <div class="modal-body text-justify small" id="div-msg-error">
+                </div>
+            </div>
+        </div>
+    </dialog>
+
+    <!---------------  Message Success ---------------->
+    <dialog class="justify-content-center p-0" id="modal-message-success-update" role="dialog"
+        aria-labelledby="exampleModalLabel" aria-hidden="true"
+        style="border: none; border-radius: 10px; width: 70%;background-color: #33333300;">
+        <div class="col-xl-7 p-3" style="background-color: #26f14fec; border: none; border-radius: 10px;margin: auto;">
+            <div class="modal-content">
+                <div class="modal-header d-flex">
+                    <h5 class="modal-title text-primary" id="exampleModalLabel"><strong>¡Hecho!</strong>
+                    </h5>
+                </div>
+                <hr>
+                <div class="small" id="div-msg-success" style="font-weight: bold;">
+                </div>
+            </div>
+        </div>
+    </dialog>
+
+    <!--------------- Cargando ---------------->
+    <dialog id="loading" class="modal-dialog">
+        <div>
+            <img src="/assets/images/loading.gif" alt="Cargando...">
+        </div>
+    </dialog>
+
+    <script src="/assets/js/user/validar_sesion.js"></script>
+    <script src="/assets/js/script_menu.js"></script>
+    <script src="assets/js/tramite/mis_tramites.js"></script>
+</body>
+
+</html>

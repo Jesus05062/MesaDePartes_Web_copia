@@ -1,0 +1,14 @@
+body{
+    padding: 50px;
+}
+#modal::backdrop{
+    background-color: rgb(183, 174, 174);
+}
+#modal{
+    max-width: 50ch;
+}
+
+/* INFO MODO DE EMISION */
+
+
+

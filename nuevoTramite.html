@@ -1,0 +1,702 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trámite Documentario</title>
+    <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/gh/habibmhamadi/multi-select-tag@2.0.1/dist/css/multi-select-tag.css">
+    <link rel="stylesheet" href="bootstrap-5.3.3-dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="assets/css/estilos.css">
+    <script src="https://kit.fontawesome.com/017fac5817.js" crossorigin="anonymous"></script>
+    <!-- Agregar el logo -->
+    <link rel="icon" href="https://munisayan.gob.pe/Rentas/Recursos/logo1.png" type="image/x-icon">
+</head>
+
+<body id="body">
+    <style>
+        /* Estilos para centrar el modal */
+        .modal-dialog {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            border: none;
+            background: none;
+            text-align: center;
+        }
+
+        .mensaje-style {
+            background-color: #ffffff;
+            border: none;
+            border-radius: 10px;
+            position: flex;
+            margin: auto;
+            max-width: 700px;
+            padding: 10px;
+        }
+
+        #modal-message-success-update {
+            margin: auto;
+        }
+    </style>
+
+    <header>
+        <div class="icon__menu">
+            <img src="/assets/images/hamburguesa.png" alt="Menu Icon" id="btn_open">
+            <!-- <i class="fas fa-bars" id="btn_open"></i> -->
+        </div>
+        <div id="id_icon_user" class="icon__user empuje__icon">
+            <img src="assets/images/perfil64px.png" alt="User Icon" id="btn_open_perfil">
+        </div>
+    </header>
+
+    <div class="menu__side" id="menu_side">
+
+        <div class="name__page">
+            <i class="fas fa-brasas" title="Mis Documentos"></i>
+            <p id="name_title" style="font-size: 18px;">Trámite Documentario</p>
+        </div>
+
+        <div class="options__menu">
+            <a href="/misTramites.html" class="selected">
+                <div class="option__enum">
+                    <img src="/assets/images/documento.png" alt="" title="Mis tramites">
+                    <!-- <i class="fas fa-file" title="Mis Tramites"></i> -->
+                    <h6>Mis Trámites</h6>
+                </div>
+            </a>
+        </div>
+    </div>
+
+    <main>
+        <div id="body__container" class="body__container">
+            <div class="subtitle">
+                <h2>Registrando Nuevo Documento</h2><br>
+            </div>
+            <hr>
+            <div class="container__body">
+                <form class="row mt-3 g-3 needs-validation" method="post" action="" autocomplete="off" novalidate>
+                    <!-- <div class="row d-flex justify-content-center mt-4 mb-3">
+                        <div class="col-sm-8 col-md-3">
+                            <label for="id_modoEmision" class="form-label"><b>Modo de Emision</b><span
+                                    class="text-danger small">*</span> :</label>
+                            <button id="btn-abrir-modal" type="button"
+                                class="btn btn-outline-info rounded-circle btn-rounded btn-sm ml-1 px-1 py-0" aria-haspopup="dialog" aria-controls="modal"><i
+                                    class="fas fa-question"></i></button>
+                            <dialog id="modal" class="col-12 p-3">
+                                <h2>Modo de Emision</h2>
+                                <hr>
+
+                                <div class="mini_container">
+                                    El modo de Emisión le permite indicar si el documento que va a remitir es personal
+                                    con DNI o desde una institución con RUC.
+
+                                    <div class="modal_info">
+                                        <p><span>*</span>Si es personal, puede presentarlo siempre y cuando lo firme
+                                            Usted; pero si el documento lo va a firmar otra persona tiene que indicar el
+                                            DNI DEL FIRMANTE.</p>
+                                        <p><span>*</span>Si es institucional, tiene que indicar el RUC de la empresa e
+                                            indicar el DNI DEL FIRMANTE</p>
+                                    </div>
+                                    En ambos casos debe estar tal y como está consignado los datos en el documento.
+                                </div>
+                                <button id="btn-cerrar-modal" class="btn btn-outline-secondary m-3"> Cerrar</button>
+                            </dialog>
+
+                            <select class="form-select" name="tipoEmision" id="id_modoEmision" required>
+                                <option value="">Seleccione...</option>
+                                <option value="Personal">Personal</option>
+                                <option value="Institucional">Institucional</option>
+                            </select>
+                            <div class="valid-feedback">
+                                OK
+                            </div>
+                            <div class="invalid-feedback">
+                                Es necesario
+                            </div>
+                        </div> 
+                        <div class="col-sm-8 col-md-3" id="id_rucField" style="display: none;">
+                            <label for="id_ruc" class="form-label"><b>RUC</b><span class="text-danger small">*</span>
+                                :</label>
+                            <input type="text" name="ruc" minlength="7" maxlength="15" class="form-control"
+                                placeholder="Número de Documento" id="id_ruc"
+                                oninput="this.value = this.value.replace(/[^0-9]/g, '')">
+                        </div>
+                    </div>-->
+                    <div class="row d-flex justify-content-center mb-3">
+                        <div class="col-sm-8 col-md-3">
+                            <label for="id_tipoDocumento" class="form-label"><b>Tipo de Documento</b><span
+                                    class="text-danger small">*</span> :</label>
+                            <select class="form-select selectpicker" name="" id="id_tipoDocumento" required>
+                                <option value="">Seleccione...</option>
+                            </select>
+                            <div class="valid-feedback">
+                                OK
+                            </div>
+                            <div class="invalid-feedback">
+                                Es necesario
+                            </div>
+                        </div>
+                        <div class="col-sm-4 col-md-2">
+                            <label for="id_documento" class="form-label"><b>Documento</b><span
+                                    class="text-danger small">*</span> :</label>
+                            <input type="text" class="form-control" maxlength="50" id="id_documento" placeholder="0"
+                                required>
+                            <div class="valid-feedback">
+                                OK
+                            </div>
+                            <div class="invalid-feedback">
+                                Definir
+                            </div>
+                        </div>
+                        <div class="col-sm-4 col-md-3">
+                            <label for="id_folios" class="form-label"><b>N° Folios</b> <span
+                                    class="text-danger small">*</span> :</label>
+                            <input type="text" class="form-control " id="id_folios" maxlength="5"
+                                oninput="this.value = this.value.replace(/[^0-9]/g, '')" required>
+                        </div>
+                        <div class="col-sm-4 col-md-3">
+                            <label for="id_fecha" class="form-label"><b>Fecha</b><span
+                                    class="text-danger small">*</span>
+                                :</label>
+                            <input type="date" class="form-control " id="id_fecha" required>
+                            <div class="valid-feedback">
+                                OK
+                            </div>
+                            <div class="invalid-feedback">
+                                Definir Fecha del Trámite
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-4 col-md-3">
+                        <label for="id_dniFirmante" class="form-label">Dni del Firmante :</label>
+                        <input type="text" class="form-control " id="id_dniFirmante"
+                            oninput="this.value = this.value.replace(/[^0-9]/g, '').slice(0,8)">
+                    </div>
+                    <div class="col-sm-8 col-md-5">
+                        <label for="id_nombreFirmante" class="form-label"><b>Nombre del Firmante</b><span
+                                class="text-danger small">*</span> :</label>
+                        <input type="text" class="form-control " name="" id="id_nombreFirmante"
+                            oninput="this.value = this.value.replace(/[^a-z,^A-Z, ]/g, '')" required>
+                        <div class="valid-feedback">
+                            OK
+                        </div>
+                        <div class="invalid-feedback">
+                            Definir nombre
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <label for="id_cargoFirmante" class="form-label"><b>Cargo del Firmante</b><span
+                                class="text-danger small">*</span> : <button id="btn-abrir-info-cargo" type="button"
+                                class="btn btn-outline-info rounded-circle btn-rounded btn-sm ml-1 px-1 py-0"><i
+                                    class="fas fa-question"></i></button></label>
+                        <input type="text" class="form-control " id="id_cargoFirmante">
+                        <div class="valid-feedback">
+                            OK
+                        </div>
+                        <div class="invalid-feedback">
+                            Definir cargo
+                        </div>
+                    </div>
+
+                    <fieldset class="data-user p-3" style="border: 3px solid; border-color: orange;">
+                        <div class="row d-flex justify-content-center ">
+                            <div class="col-12 text-center">
+                                <div class="alert alert-warning p-2">
+                                    Estos datos deben de ser de la persona o entidad de donde se remite el documento,
+                                    para efectos de notificación.
+                                </div>
+                            </div>
+                            <div class="col-md-4 pt-2 pt-md-1">
+                                <label for="id_departamento" class="form-label"><b>Departamento<span
+                                            class="text-danger small">*</span></b></label>
+                                <select name="departamento" class="form-control selectpicker" style="width: 100%"
+                                    placeholder="Departamento" id="id_departamento" required>
+                                </select>
+                            </div>
+                            <div class="col-md-4 pt-2 pt-md-1">
+                                <label for="id_provincia" class="form-label"><b>Provincia<span
+                                            class="text-danger small">*</span> :</b></label>
+                                <select name="provincia" class="form-control selectpicker"
+                                    data-minimum-results-for-search="-1" style="width: 100%"
+                                    data-minimum-input-length="0" placeholder="Provincia" id="id_provincia" required>
+                                </select>
+                            </div>
+                            <div class="col-md-4 pt-2 pt-md-1">
+                                <label for="id_distrito" class="form-label"><b>Distrito<span
+                                            class="text-danger small">*</span> :</b></label>
+                                <select name="distrito" class="form-control selectpicker"
+                                    data-minimum-results-for-search="-1" style="width: 100%"
+                                    data-minimum-input-length="0" placeholder="Distrito" id="id_distrito" required>
+                                </select>
+                            </div>
+                            <div class="col-sm-6">
+                                <label for="id_direccion" class="form-label"><b>Dirección<span
+                                            class="text-danger small">*</span> :</b></label>
+                                <input type="text" id="id_direccion" class="form-control" required>
+                            </div>
+                            <div class="col-sm-3">
+                                <label for="id_telefono" class="form-label"><b>Telefono<span
+                                            class="text-danger small">*</span> :</b></label>
+                                <input type="text" name="" id="id_telefono" class="form-control"
+                                    oninput="this.value = this.value.replace(/[^0-9]/g, '').slice(0, 9)" required>
+                            </div>
+                            <div class="col-sm-3">
+                                <label for="id_email" class="form-label"><b>Correo<span
+                                            class="text-danger small">*</span> :</b></label>
+                                <input type="email" name="email" maxlength="254" class="form-control"
+                                    placeholder="Ejemplo@gmail.com" required id="id_email">
+                            </div>
+                        </div>
+                    </fieldset>
+
+                    <div class="row d-flex justify-content-center mt-2">
+                        <div class="col-sm-12">
+                            <label for="id_asunto" class="form-label"><b>Asunto (tal y como está consignado en
+                                    sudocumento)<span class="text-danger small">*</span> :</b></label>
+                            <textarea id="id_asunto" class="form-control" name="asunto" id="" cols="40" rows="2"
+                                maxlength="1000" style="resize: none;" required></textarea>
+                            <div class="valid-feedback">
+                                OK
+                            </div>
+                            <div class="invalid-feedback">
+                                Es necesario
+                            </div>
+                        </div>
+                        <div class="col-md-6 mt-2">
+                            <label class="form-label" for="id_dependencia"><b>Dependencia(s) Destino(s)<span
+                                        class="text-danger small">*</span></b></label>
+                            <select autocomplete="off" class="form-selectname areas form-control" id="id_dependencia"
+                                required>
+                                <option value="">Seleccione...</option>
+                            </select>
+                            <div class="valid-feedback">
+                                OK
+                            </div>
+                            <div class="invalid-feedback">
+                                Es necesario
+                            </div>
+                        </div>
+                        <!-- <div class="col-md-6 mt-2">
+                            <label class="form-label" for="id_dependencia"><b>Dependencia(s) Destino(s)<span
+                                        class="text-danger small">*</span></b></label>
+                            <select autocomplete="off" class="form-selectname areas" id="id_dependencias" required>
+                                <option value="1">Obras</option>
+                                <option value="2">Alcaldia</option>
+                                <option value="3">Administracion</option>
+                                <option value="4">Logistica</option>
+                                <option value="5">Tesoreria</option>
+                                <option value="6">Sistemas</option>
+                                <option value="7">Desarrollo Humano</option>
+                            </select>
+                        </div> 
+                        <div class="valid-feedback">
+                            Selecciona el/los destino(s)
+                        </div> -->
+                        <!-- <div class="col-md-6 mt-2">
+                            <label for="id_dirigidoa" class="form-label"><b>Dirigido a<span
+                                        class="text-danger small">*</span> :</b></label>
+                            <input type="text" name="dirigidoa" required id="id_dirigidoa" class="form-control"
+                                wfd-id="id13">
+                        </div> -->
+                        <div class="col-md-6 mt-2">
+                            <label for="id_archivocorto" class="form-label"><b>Archivo (PDF máx 5 MB)<span
+                                        class="text-danger small">*</span> :</b></label>
+                            <input type="file" class="form-control" accept="application/pdf" id="id_archivocorto"
+                                required>
+                        </div>
+                        <div class="col-md-6 mt-2">
+                            <label for="id_anexo" class="form-label"><b>URL del Anexo (leer indicaciones)</b>:<button
+                                    id="btn-abrir-info-anexo" type="button"
+                                    class="btn btn-outline-info rounded-circle btn-rounded btn-sm ml-1 px-1 py-0"><i
+                                        class="fas fa-question"></i></button></label>
+
+
+                            <input id="id_anexo" type="text" class="form-control" style="height: 50px;">
+                        </div>
+                        <div class="col-12 mt-4 mb-4 d-flex justify-content-center">
+                            <div class="col-4">
+                                <button type="submit" class="btn btn-primary " style="width: 100%;">Enviar</button>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+
+                <!--------------------------- Info sobre Cargo del Firmante --------------------------->
+                <dialog id="modal-info-cargo" class="col-12 p-3" aria-hidden="true"
+                    style="background-color: #ffffff; border: none; border-radius: 10px; position: flex; margin: auto; max-width: 700px; padding: 10px;">
+                    <p class="text-primary">Información para el Campo "Cargo del Firmante"</p>
+                    <hr>
+                    <div style="text-align: justify;">
+                        El campo "Cargo del Firmante" debe completarse con el título exacto del firmante. Esto incluye:
+                    </div>
+                    <div class="px-3 small">
+                        <p>
+                            <b>1. Representantes de Entidades:</b> Indique su cargo, como "Presidente de la Asociación
+                            de
+                            Vecinos" o "Secretario General del Sindicato".
+                        </p>
+                        <p>
+                            <b>2. Profesionales Independientes:</b> Especifique su título y especialidad, por ejemplo,
+                            "Ingeniero Civil", "Doctor en Medicina" o "Abogado del Bufete Jurídico ABC".
+                        </p>
+                        <p>
+                            <b>3. Funcionarios Públicos:</b> Mencione su cargo dentro de la institución, como "Director
+                            de
+                            Obras Públicas" o "Jefe de la Oficina de Planeamiento".
+                        </p>
+                        <p>
+                            <b>4. Otras Representaciones:</b> Detalle el cargo en instituciones como hospitales,
+                            clínicas o
+                            educativas, por ejemplo, "Director del Hospital Municipal" o "Rector de la Universidad XYZ".
+                        </p>
+                    </div>
+                    <div>
+                        Es esencial que la información sea precisa y veraz para garantizar la correcta identificación y
+                        validación del trámite.
+                    </div>
+                    <!-- <div class="row d-flex justify-content-center">
+                        <div style="width: 180px; padding: 10px;">
+                            <img src="/assets/images/GOOGLE_DRIVE.jpg" alt="" style="width: 100%;">
+                        </div>
+                        <div style="width: 180px;padding: 10px;">
+                            <img src="/assets/images/ONE_DRIVE.png" alt="" style="width: 100%;">
+                        </div>
+                        <div style="width: 180px;padding: 10px;">
+                            <img src="/assets/images/MEGA.png" alt="" style="width: 100%;">
+                        </div>
+                    </div> -->
+                    <div class="text-center">
+                        <button type="button" id="btn-cerrar-info-cargo" class="btn btn-outline-success m-3">
+                            Entiendo</button>
+                    </div>
+                </dialog>
+                <!--------------------------- Info sobre Anexos--------------------------->
+                <dialog id="modal-info-anexo" class="col-12 p-3" aria-hidden="true"
+                    style="background-color: #ffffff; border: none; border-radius: 10px; position: flex; margin: auto; max-width: 700px; padding: 10px;">
+                    <p class="text-primary">Urls permitidas</p>
+                    <hr>
+                    <div class="text-center">
+                        Si es un solo archivo, comparta la URL del mismo; pero si son varios archivos deberá
+                        comprimirlos y luego compartir <b class="text-primary">la URL sólo del archivo
+                            comprimido</b>, más no de toda la
+                        carpeta. <br>
+                        Las URLs permitidas de las páginas donde se pueden almacenar los archivos, deberán
+                        cumplir el siguiente formato:
+                    </div>
+                    <div class="row d-flex justify-content-center">
+                        <div style="width: 180px; padding: 10px;">
+                            <img src="/assets/images/GOOGLE_DRIVE.jpg" alt="" style="width: 100%;">
+                        </div>
+                        <div style="width: 180px;padding: 10px;">
+                            <img src="/assets/images/ONE_DRIVE.png" alt="" style="width: 100%;">
+                        </div>
+                        <div style="width: 180px;padding: 10px;">
+                            <img src="/assets/images/MEGA.png" alt="" style="width: 100%;">
+                        </div>
+                    </div>
+                    <div class="text-center">
+                        <button type="button" id="btn-cerrar-info-anexo" class="btn btn-outline-secondary m-3">
+                            Cerrar</button>
+                    </div>
+                </dialog>
+                <!--------------------------- Info General de Horarios--------------------------->
+                <dialog class="" id="modal-message-alert"
+                    style="background-color: #ffffff; border: none; border-radius: 10px; position: fixed; margin: auto; max-width: 900px; padding: 20px;">
+                    <div class="" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header text-center d-flex justify-content-center">
+                                <img src="/assets/images/alert.png" alt="" style="display: block; margin: 0 auto;">
+                            </div>
+                            <div class="modal-body text-justify small" style="text-align: justify; font-size: 12px;">
+                                Estimado(a) Usuario(a) se le comunica que los escritos ingresados por trámite digital
+                                serán recepcionados en el horario establecido que norma la Implementación y
+                                Funcionamiento en nuestro sistema <strong class="text-primary">TRAMITE
+                                    DOCUMENTARIO</strong> son:
+                                <br>
+                                <div class="m-auto px-3 py-1 mt-1"
+                                    style="font-style: italic; border-radius: 4px; width: 98%; font-size: 12px; background-color: rgba(184, 176, 176, 0.731); border: 1px solid rgb(129, 123, 123);">
+                                    Los horarios de atención para la recepción de los documentos en la mesa de partes
+                                    digital "Trámite Digital" son:
+                                    <br>
+                                    <br>
+                                    <p>
+                                        • Documentos presentados desde las 00:00 horas hasta el término del horario de
+                                        atención de la entidad de un día hábil, se consideran presentados el mismo día.
+                                        <br>
+                                        • Documentos presentados después del horario de atención de la entidad hasta las
+                                        23:59 horas, se consideran presentados el día hábil siguiente.
+                                        <br>
+                                        • Documentos presentados los sábados, domingos, feriados o no laborable para el
+                                        sector
+                                        público, se consideran presentados al primer día hábil siguiente.
+                                    </p>
+                                </div>
+                                Asimismo, se hace de conocimiento que los escritos deberán cumplir con los requisitos
+                                prescritos en el artículo 124 del Texto Único Ordenado de la Ley N° 27444, Ley del
+                                Procedimiento Administrativo General, aprobado con Decreto Supremo N° 004-2019-JUS, los
+                                mismos que se detallan a continuación:
+                                <div class="pt-1">
+                                    1. <b>Persona natural:</b> Nombre y apellidos completos, dirección y número de DNI o
+                                    carnet de
+                                    extranjería (de ser el caso), <b>Persona Jurídica:</b> Número de RUC, dirección,
+                                    Nombre y
+                                    apellidos completos y número de DNI del representante legal y en su caso, la calidad
+                                    de representante y de la persona a la que represente. <br>
+                                    2. <b>La expresión concreta de lo pedido,</b> los fundamentos de hecho que lo apoye
+                                    y, cuando
+                                    le sea posible, los de derecho. <br>
+                                    3. <b>Lugar, fecha, firma o huella digital,</b> en caso de no saber firmar o estar
+                                    impedido. <br>
+                                    4. <b>La indicación del órgano, la entidad o la autoridad a la cual está
+                                        dirigida,</b>
+                                    entendiéndose por tal, en lo posible, a la autoridad del grado más cercano al
+                                    usuario, según la jerarquía, con competencia para conocerlo y resolverlo. <br>
+                                    5. <b>De ser el caso, dirección del lugar donde desea recibir las notificaciones del
+                                        procedimiento,</b> cuando sea diferente al domicilio real expuesto en virtud del
+                                    numeral
+                                    1. Este señalamiento surte sus efectos desde su indicación y es presumido
+                                    subsistente, mientras no sea comunicado expresamente su cambio. <br>
+                                    6. <b>La relación de los documentos y anexos que acompaña su escrito,</b> indicados
+                                    en el
+                                    TUPA. <br>
+                                    7. La identificación del expediente de la materia, tratándose de procedimientos ya
+                                    iniciados. <br><br>
+                                </div>
+                            </div>
+                            <div class="text-center">
+                                <button id="btn-cerrar-message-alert" class="btn btn-primary">
+                                    Entendido
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </dialog>
+            </div>
+        </div>
+    </main>
+
+    <!--------------- Perfil Usuario---------------->
+    <div id="id_perfil" class="perfil_usuario" style="box-shadow: -3px 0px 3px 0px rgba(0.1, 0.1, 0.1, 0.1);">
+        <div style="width: 90%; margin: auto;">
+            <div class="option__perfil text-center">
+                <img src="" alt="">
+            </div>
+            <div class="header_perfil">
+                <strong id="id_documento_Field"></strong>
+            </div>
+            <div class="header_perfil">
+                <strong id="id_nombre_Field" class="text-primary"></strong>
+            </div>
+            <hr>
+            <div id="id_editarPerfil" class="option__perfil option__perfil_hover">
+                <div class="icono__content">
+                    <img src="/assets/images/gente.png" alt="">
+                </div>
+                &nbsp;
+                <h6>Perfil</h6>
+            </div>
+            <hr>
+            <div id="btn_cerrar_sesion" class="option__perfil option__perfil_hover">
+                <div class="icono__content">
+                    <img src="/assets/images/Log-off.png" alt="">
+                </div>
+                &nbsp;
+                <h6>Cerrar Sesion</h6>
+            </div>
+        </div>
+    </div>
+
+    <!--------------------------- Editar Datos --------------------------->
+    <dialog class="" id="modal-perfil-datos"
+        style="background-color: #ffffff; border: none; border-radius: 10px; position: fixed; margin: auto; max-width: 900px; padding: 20px;">
+        <div class="" role="document">
+            <div class="">
+                Actualizar Datos Principales
+                <hr>
+                <form action="">
+
+                    <fieldset class="data-user p-3">
+                        <div class="row d-flex justify-content-center ">
+                            <div class="col-md-4 pt-2 pt-md-1">
+                                <label for="id_departamento_Field" class="form-label"><b>Departamento<span
+                                            class="text-danger small">*</span></b></label>
+                                <select name="departamento" class="form-control selectpicker"
+                                    data-minimum-results-for-search="-1" style="width: 100%"
+                                    data-minimum-input-length="0" placeholder="Departamento" id="id_departamento_Field"
+                                    required>
+                                </select>
+                            </div>
+                            <div class="col-md-4 pt-2 pt-md-1">
+                                <label for="id_provincia_Field" class="form-label"><b>Provincia<span
+                                            class="text-danger small">*</span> :</b></label>
+                                <select name="provincia" class="form-control selectpicker"
+                                    data-minimum-results-for-search="-1" style="width: 100%"
+                                    data-minimum-input-length="0" placeholder="Provincia" id="id_provincia_Field"
+                                    required>
+                                </select>
+                            </div>
+                            <div class="col-md-4 pt-2 pt-md-1">
+                                <label for="id_distrito_Field" class="form-label"><b>Distrito<span
+                                            class="text-danger small">*</span> :</b></label>
+                                <select name="distrito" class="form-control selectpicker"
+                                    data-minimum-results-for-search="-1" style="width: 100%"
+                                    data-minimum-input-length="0" placeholder="Distrito" id="id_distrito_Field"
+                                    required>
+                                </select>
+                            </div>
+                            <div class="col-sm-6">
+                                <label for="id_direccion_Field" class="form-label"><b>Dirección<span
+                                            class="text-danger small">*</span> :</b></label>
+                                <input type="text" id="id_direccion_Field" class="form-control" required>
+                            </div>
+                            <div class="col-sm-3">
+                                <label for="id_telefono_Field" class="form-label"><b>Telefono<span
+                                            class="text-danger small">*</span> :</b></label>
+                                <input type="text" name="" id="id_telefono_Field" class="form-control"
+                                    oninput="this.value = this.value.replace(/[^0-9]/g, '').slice(0, 9)" required>
+                            </div>
+                            <div class="col-sm-3">
+                                <label for="id_email_Field" class="form-label"><b>Correo<span
+                                            class="text-danger small">*</span> :</b></label>
+                                <input type="email" name="email" maxlength="254" class="form-control"
+                                    placeholder="Ejemplo@gmail.com" required id="id_email_Field">
+                            </div>
+                        </div>
+                    </fieldset>
+
+                    <div class="text-center  pt-2">
+                        <button type="submit" id="btn_actualizar_datos" class="btn btn-primary">
+                            Actualizar
+                        </button>
+                    </div>
+                </form>
+
+            </div>
+        </div>
+    </dialog>
+    <!-- -------------------- MESSAGE SUCCESS ----------------------------------- -->
+    <div id="modal-message-success" class="col-12 p-3 mensaje-style" aria-hidden="true" style="display: none;">
+        <div class="modal-header text-center d-flex justify-content-center">
+            <img src="/assets/images/lista-de-verificacion.png" alt="" style="display: block; margin: 0 auto;">
+        </div>
+        <hr>
+        <div class="text-center">
+            <div class="text-primary">Solicitud N°<strong id="id_correlativoWeb" class="text-danger"></strong>
+                Registrada Correctamente</div>
+            <div>
+                Estimado(a): <b class="text-secondary" id="id_nombres_success"></b>
+            </div>
+            <script>
+                (() => {
+                    'use strict'
+
+                    const id_nombres_success = document.getElementById("id_nombres_success");
+
+                    const nombres = localStorage.getItem("Nombres");
+
+                    id_nombres_success.innerHTML = nombres;
+                })()
+            </script>
+            <br>
+            <div>
+                Su solicitud está siendo procesada. Una vez aceptada se generará el número de expediente.
+                Esté pendiente de su bandeja <strong>Mis Trámites</strong> para saber el estado del documento.
+            </div>
+            <br>
+        </div>
+        <div class="d-flex justify-content-center" style="display: flex;">
+            <div class="text-center m-3">
+                <button type="button" id="btn-cerrar-info-anexo" class="btn btn-primary">
+                    <a href="/misTramites.html" style="text-decoration: none; color: white;">Ir a Mis Trámites</a>
+                </button>
+            </div>
+            <div class="text-center m-3">
+                <button id="btn-cerrar-info-anexo" class="btn btn-secondary">
+                    <a href="/nuevoTramite.html" style="text-decoration: none; color: white;">Registrar otro
+                        Documento</a>
+                </button>
+            </div>
+        </div>
+
+    </div>
+    <!--------------- Cargando ---------------->
+    <dialog id="loading" class="modal-dialog">
+        <div>
+            <img src="/assets/images/loading.gif" alt="Cargando...">
+        </div>
+    </dialog>
+
+    <!---------------  Errores ---------------->
+    <dialog class="justify-content-center p-0" id="modal-error" role="dialog" aria-labelledby="exampleModalLabel"
+        aria-hidden="true"
+        style="border: none; border-radius: 10px; width: 70%; background-color: #33333300; margin: auto;">
+        <div class="col-xl-7 p-3" style="background-color: #f12626ec; border: none; border-radius: 10px;margin: auto;">
+            <div class="modal-content text-white">
+                <div class="modal-header d-flex">
+                    <h5 class="modal-title" id="exampleModalLabel">Se encontraron excepciones
+                    </h5>
+                    <button type="button" id="btn-cerrar-modal-error" class="btn btn-primary ms-auto"
+                        data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <hr>
+                <div class="modal-body text-justify small" id="div-msg-error">
+                </div>
+            </div>
+        </div>
+    </dialog>
+    <!---------------  Message Success ---------------->
+    <dialog class="justify-content-center p-0" id="modal-message-success-update" role="dialog"
+        aria-labelledby="exampleModalLabel" aria-hidden="true"
+        style="border: none; border-radius: 10px; width: 70%;background-color: #33333300;">
+        <div class="col-xl-7 p-3" style="background-color: #26f14fec; border: none; border-radius: 10px;margin: auto;">
+            <div class="modal-content">
+                <div class="modal-header d-flex">
+                    <h5 class="modal-title text-primary" id="exampleModalLabel"><strong>¡Felicidades!</strong>
+                    </h5>
+                </div>
+                <hr>
+                <div class="small" id="div-msg-success" style="font-weight: bold;">
+                </div>
+            </div>
+        </div>
+    </dialog>
+    <script>
+            // Example starter JavaScript for disabling form submissions if there are invalid fields
+            (() => {
+                'use strict'
+
+                // Fetch all the forms we want to apply custom Bootstrap validation styles to
+                const forms = document.querySelectorAll('.needs-validation')
+
+                // Loop over them and prevent submission
+                Array.from(forms).forEach(form => {
+                    form.addEventListener('submit', event => {
+                        if (!form.checkValidity()) {
+                            event.preventDefault()
+                            event.stopPropagation()
+                        }
+
+                        form.classList.add('was-validated')
+                    }, false)
+                })
+            })()
+    </script>
+
+    <script src="/assets/js/user/validar_sesion.js"></script>
+
+    <script src="https://cdn.jsdelivr.net/gh/habibmhamadi/multi-select-tag@2.0.1/dist/js/multi-select-tag.js"></script>
+    <!-- <script>
+        new MultiSelectTag('id_dependencias')  // id
+    </script> -->
+    <script src="assets/js/script_menu.js"></script>
+    <script src="assets/js/func_nuevo_tramite.js"></script>
+    <script src="/assets/js/tramite/nuevo_Tramite.js"></script>
+</body>
+
+</html>
