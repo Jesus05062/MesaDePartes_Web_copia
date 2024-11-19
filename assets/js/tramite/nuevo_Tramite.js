@@ -27,6 +27,28 @@ document.addEventListener("DOMContentLoaded", function () {
 
     submitNuevoTramite.addEventListener("submit", function (event) {
         event.preventDefault();
+        if (document.querySelector("#select-btn_tipoExpediente span").textContent === "Seleccione...") {
+            const msgerr = "Debes seleccionar un tipo de Expediente";
+            createErrors(msgerr);
+            modal.showModal();
+            return;
+        } else if (document.querySelector("#select-btn_departamento span").textContent === "Seleccione...") {
+            const msgerr = "Debes seleccionar un departamento";
+            createErrors(msgerr);
+            modal.showModal();
+            return;
+        } else if (document.querySelector("#select-btn_provincia span").textContent === "Seleccione...") {
+            const msgr = "Debes seleccionar una provincia";
+            createErrors(msgr);
+            modal.showModal();
+            return;
+        } else if (document.querySelector("#select-btn_distrito span").textContent === "Seleccione...") {
+            const msgerr = "Debes selccionar un distrito";
+            createErrors(msgerr);
+            modal.showModal();
+            return;
+        }
+        
         submitForm();
     });
 
@@ -105,15 +127,15 @@ document.addEventListener("DOMContentLoaded", function () {
     const submitForm = async () => {
         const formData = new FormData();
 
-        const selectDepartamento = document.querySelector("#id_departamento");
-        const selectProvincia = document.querySelector("#id_provincia");
-        const selectDistrito = document.querySelector("#id_distrito");
-        const selectDependencia = document.querySelector("#id_dependencia");
+        //const selectDepartamento = document.querySelector("#id_departamento");
+        //const selectProvincia = document.querySelector("#id_provincia");
+        //const selectDistrito = document.querySelector("#id_distrito");
+        //const selectDependencia = document.querySelector("#id_dependencia");
 
-        const seltedDepartamento = selectDepartamento.options[selectDepartamento.selectedIndex].text;
-        const seltedProvincia = selectProvincia.options[selectProvincia.selectedIndex].text;
-        const seltedDistrito = selectDistrito.options[selectDistrito.selectedIndex].text;
-        const seltedtDependencia = selectDependencia.options[selectDependencia.selectedIndex].text;
+        //const seltedDepartamento = selectDepartamento.options[selectDepartamento.selectedIndex].text;
+        //const seltedProvincia = selectProvincia.options[selectProvincia.selectedIndex].text;
+        //const seltedDistrito = selectDistrito.options[selectDistrito.selectedIndex].text;
+        //const seltedtDependencia = selectDependencia.options[selectDependencia.selectedIndex].text;
 
         // Archivo
         const archivoInput = document.querySelector("#id_archivocorto");
@@ -124,26 +146,26 @@ document.addEventListener("DOMContentLoaded", function () {
         const body = [
             {
                 IdUsuario: localStorage.getItem("documento"),
-                /* ModoEmision: document.querySelector("#id_modoEmision").value,
-                Ruc: document.querySelector("#id_ruc").value, */
-                TipoDocumento: document.querySelector("#id_tipoDocumento").value,
+                //ModoEmision: document.querySelector("#id_modoEmision").value,
+                //Ruc: document.querySelector("#id_ruc").value,
+                TipoDocumento: document.querySelector("#select-btn_tipoDocumento span").textContent,
                 Documento: document.querySelector("#id_documento").value,
                 Folios: document.querySelector("#id_folios").value,
-                /* Siglas: "Siglas 1", */
+                //Siglas: "Siglas 1",
                 Fecha: document.querySelector("#id_fecha").value,
                 DocumentoFirmante: document.querySelector("#id_dniFirmante").value,
                 NombreFirmante: document.querySelector("#id_nombreFirmante").value,
                 CargoFirmante: document.querySelector("#id_cargoFirmante").value,
 
-                Departamento: seltedDepartamento,
-                Provincia: seltedProvincia,
-                Distrito: seltedDistrito,
+                Departamento: document.querySelector("#select-btn_departamento span").textContent,
+                Provincia: document.querySelector("#select-btn_provincia span").textContent,
+                Distrito: document.querySelector("#select-btn_distrito span").textContent,
 
                 Direccion: document.querySelector("#id_direccion").value,
                 Telefono: document.querySelector("#id_telefono").value,
                 CorreoElectronico: document.querySelector("#id_email").value,
                 Asunto: document.querySelector("#id_asunto").value,
-                Unidades: seltedtDependencia,
+                Unidades: document.querySelector("#select-btn_dependencia span").textContent,
                 Estado: true,
                 EstadoTramite: "registrado",
                 UrlAnexo: document.querySelector("#id_anexo").value,

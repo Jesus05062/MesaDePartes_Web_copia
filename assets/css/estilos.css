@@ -185,7 +185,7 @@ a.selected {
     content: '';
     width: 3px;
     height: 80%;
-    background: rgb(16, 187, 16);
+    /* background: rgb(16, 187, 16); */
     position: absolute;
     top: 10%;
     left: -15px;

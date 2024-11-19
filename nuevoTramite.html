@@ -10,9 +10,13 @@
         href="https://cdn.jsdelivr.net/gh/habibmhamadi/multi-select-tag@2.0.1/dist/css/multi-select-tag.css">
     <link rel="stylesheet" href="bootstrap-5.3.3-dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="assets/css/estilos.css">
+    <link rel="stylesheet" href="assets/css/custom_select.css">
     <script src="https://kit.fontawesome.com/017fac5817.js" crossorigin="anonymous"></script>
     <!-- Agregar el logo -->
     <link rel="icon" href="https://munisayan.gob.pe/Rentas/Recursos/logo1.png" type="image/x-icon">
+    <!-- Iconosout -->
+    <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css">
+
 </head>
 
 <body id="body">
@@ -61,7 +65,7 @@
         </div>
 
         <div class="options__menu">
-            <a href="/misTramites.html" class="selected">
+            <a href="/misTramites.html">
                 <div class="option__enum">
                     <img src="/assets/images/documento.png" alt="" title="Mis tramites">
                     <!-- <i class="fas fa-file" title="Mis Tramites"></i> -->
@@ -127,17 +131,24 @@
                         </div>
                     </div>-->
                     <div class="row d-flex justify-content-center mb-3">
-                        <div class="col-sm-8 col-md-3">
-                            <label for="id_tipoDocumento" class="form-label"><b>Tipo de Documento</b><span
-                                    class="text-danger small">*</span> :</label>
-                            <select class="form-select selectpicker" name="" id="id_tipoDocumento" required>
-                                <option value="">Seleccione...</option>
-                            </select>
-                            <div class="valid-feedback">
-                                OK
-                            </div>
-                            <div class="invalid-feedback">
-                                Es necesario
+                        <div class="col-sm-4 col-md-5">
+                            <div id="wrapper_tipoDocumento" class="wrapper">
+                                <label for="id_tipoDocumento" class="form-label"><b>Tipo de Documento</b><span
+                                        class="text-danger small">*</span> :</label>
+                                <div id="select-btn_tipoDocumento" class="select-btn">
+                                    <span>Seleccione...</span>
+                                    <i class="uil uil-angle-down"></i>
+                                </div>
+                                <div class="content">
+                                    <div class="search">
+                                        <i class="uil uil-search"></i>
+                                        <input id="input-search_tipoDocumento" class="input-search" type="text"
+                                            placeholder="Search">
+                                    </div>
+                                    <ul id="opt_tipoDocumento" class="opt">
+
+                                    </ul>
+                                </div>
                             </div>
                         </div>
                         <div class="col-sm-4 col-md-2">
@@ -152,13 +163,13 @@
                                 Definir
                             </div>
                         </div>
-                        <div class="col-sm-4 col-md-3">
+                        <div class="col-sm-4 col-md-2">
                             <label for="id_folios" class="form-label"><b>N° Folios</b> <span
                                     class="text-danger small">*</span> :</label>
                             <input type="text" class="form-control " id="id_folios" maxlength="5"
                                 oninput="this.value = this.value.replace(/[^0-9]/g, '')" required>
                         </div>
-                        <div class="col-sm-4 col-md-3">
+                        <div class="col-sm-4 col-md-2">
                             <label for="id_fecha" class="form-label"><b>Fecha</b><span
                                     class="text-danger small">*</span>
                                 :</label>
@@ -205,33 +216,91 @@
                     <fieldset class="data-user p-3" style="border: 3px solid; border-color: orange;">
                         <div class="row d-flex justify-content-center ">
                             <div class="col-12 text-center">
-                                <div class="alert alert-warning p-2">
+                                <!-- <div class="alert alert-warning p-2"> -->
+                                <div class="p-2" style="background: rgb(240, 187, 187); border-radius: 8px; border: solid 2px rgb(194, 110, 0);">
                                     Estos datos deben de ser de la persona o entidad de donde se remite el documento,
                                     para efectos de notificación.
                                 </div>
                             </div>
-                            <div class="col-md-4 pt-2 pt-md-1">
+                            <!-- <div class="col-md-4 pt-2 pt-md-1">
                                 <label for="id_departamento" class="form-label"><b>Departamento<span
                                             class="text-danger small">*</span></b></label>
                                 <select name="departamento" class="form-control selectpicker" style="width: 100%"
                                     placeholder="Departamento" id="id_departamento" required>
                                 </select>
-                            </div>
+                            </div> -->
                             <div class="col-md-4 pt-2 pt-md-1">
+                                <div id="wrapper_departamento" class="wrapper">
+                                    <label for="id_departamento" class="form-label"><b>Departamento :</b></label>
+                                    <div id="select-btn_departamento" class="select-btn">
+                                        <span>Seleccione...</span>
+                                        <i class="uil uil-angle-down"></i>
+                                    </div>
+                                    <div class="content" style="z-index: 200;">
+                                        <div class="search">
+                                            <i class="uil uil-search"></i>
+                                            <input id="input-search_departamento" class="input-search" type="text"
+                                                placeholder="Search">
+                                        </div>
+                                        <ul id="opt_departamento" class="opt">
+
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- <div class="col-md-4 pt-2 pt-md-1">
                                 <label for="id_provincia" class="form-label"><b>Provincia<span
                                             class="text-danger small">*</span> :</b></label>
                                 <select name="provincia" class="form-control selectpicker"
                                     data-minimum-results-for-search="-1" style="width: 100%"
                                     data-minimum-input-length="0" placeholder="Provincia" id="id_provincia" required>
                                 </select>
-                            </div>
+                            </div> -->
                             <div class="col-md-4 pt-2 pt-md-1">
+                                <div id="wrapper_provincia" class="wrapper">
+                                    <label for="id_provincia" class="form-label"><b>Provincia :</b></label>
+                                    <div id="select-btn_provincia" class="select-btn">
+                                        <span>Seleccione...</span>
+                                        <i class="uil uil-angle-down"></i>
+                                    </div>
+                                    <div class="content" style="z-index: 199;">
+                                        <div class="search">
+                                            <i class="uil uil-search"></i>
+                                            <input id="input-search_provincia" class="input-search" type="text"
+                                                placeholder="Search">
+                                        </div>
+                                        <ul id="opt_provincia" class="opt">
+                                            <li>Seleccione un Departamento</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- <div class="col-md-4 pt-2 pt-md-1">
                                 <label for="id_distrito" class="form-label"><b>Distrito<span
                                             class="text-danger small">*</span> :</b></label>
                                 <select name="distrito" class="form-control selectpicker"
                                     data-minimum-results-for-search="-1" style="width: 100%"
                                     data-minimum-input-length="0" placeholder="Distrito" id="id_distrito" required>
                                 </select>
+                            </div> -->
+                            <div class="col-md-4 pt-2 pt-md-1">
+                                <div id="wrapper_distrito" class="wrapper">
+                                    <label for="id_distrito" class="form-label"><b>Distrito :</b></label>
+                                    <div id="select-btn_distrito" class="select-btn">
+                                        <span>Seleccione...</span>
+                                        <i class="uil uil-angle-down"></i>
+                                    </div>
+                                    <div class="content">
+                                        <div class="search">
+                                            <i class="uil uil-search"></i>
+                                            <input id="input-search_distrito" class="input-search" type="text"
+                                                placeholder="Search">
+                                        </div>
+                                        <ul id="opt_distrito" class="opt">
+                                            <li>Seleccione una Provincia</li>
+                                        </ul>
+                                    </div>
+                                </div>
                             </div>
                             <div class="col-sm-6">
                                 <label for="id_direccion" class="form-label"><b>Dirección<span
@@ -267,9 +336,30 @@
                             </div>
                         </div>
                         <div class="col-md-6 mt-2">
+                            <div id="wrapper_dependencia" class="wrapper">
+                                <label for="id_dependencia" class="form-label"><b>Dependencia(s) Destino(s)<span
+                                            class="text-danger small">*</span></b><span
+                                        class="text-danger small">*</span> :</label>
+                                <div id="select-btn_dependencia" class="select-btn">
+                                    <span>Seleccione...</span>
+                                    <i class="uil uil-angle-down"></i>
+                                </div>
+                                <div class="content">
+                                    <div class="search">
+                                        <i class="uil uil-search"></i>
+                                        <input id="input-search_dependencia" class="input-search" type="text"
+                                            placeholder="Search">
+                                    </div>
+                                    <ul id="opt_dependencia" class="opt">
+
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- <div class="col-md-6 mt-2">
                             <label class="form-label" for="id_dependencia"><b>Dependencia(s) Destino(s)<span
                                         class="text-danger small">*</span></b></label>
-                            <select autocomplete="off" class="form-selectname areas form-control" id="id_dependencia"
+                            <select autocomplete="off" class="form-selectname form-control" id="id_dependencia"
                                 required>
                                 <option value="">Seleccione...</option>
                             </select>
@@ -279,7 +369,7 @@
                             <div class="invalid-feedback">
                                 Es necesario
                             </div>
-                        </div>
+                        </div> -->
                         <!-- <div class="col-md-6 mt-2">
                             <label class="form-label" for="id_dependencia"><b>Dependencia(s) Destino(s)<span
                                         class="text-danger small">*</span></b></label>
@@ -694,6 +784,9 @@
     <!-- <script>
         new MultiSelectTag('id_dependencias')  // id
     </script> -->
+    <script src="assets/js/func_customs_selects/custom_select_tipoExpediente.js"></script>
+    <script src="assets/js/func_customs_selects/custom_select_fieldsetUbicacion.js"></script>
+    <script src="assets/js/func_customs_selects/custom_select_dependencias.js"></script>
     <script src="assets/js/script_menu.js"></script>
     <script src="assets/js/func_nuevo_tramite.js"></script>
     <script src="/assets/js/tramite/nuevo_Tramite.js"></script>

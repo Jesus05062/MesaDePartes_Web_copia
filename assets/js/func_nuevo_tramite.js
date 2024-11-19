@@ -19,7 +19,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const btnCerrarModalAlerta = document.querySelector("#btn-cerrar-message-alert");
     const modalAlerta = document.querySelector("#modal-message-alert");
 
-    modalAlerta.showModal();
+    /* modalAlerta.showModal(); */
     btnCerrarModalAlerta.addEventListener("click", () => {
         modalAlerta.close();
     });
@@ -110,7 +110,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     }
 
     /* ---------------------CARGAR DEPARTAMENTOS--------------------- */
-    const urlDepartamento = "http://munisayan.gob.pe/tramite/api/departamento";
+    /* const urlDepartamento = "http://munisayan.gob.pe/tramite/api/departamento";
     const departamentoSelect = document.getElementById("id_departamento");
 
     await fetch(urlDepartamento, {
@@ -126,7 +126,7 @@ document.addEventListener("DOMContentLoaded", async () => {
 
             data.dpto.forEach(departamento => createOption(departamento, departamentoSelect, "departamento"));
             // Establecer el valor del departamento desde localStorage
-            /* const storedDepartamento = localStorage.getItem("departamento");
+            const storedDepartamento = localStorage.getItem("departamento");
             if (storedDepartamento) {
                 // Encontrar la opción que coincide con el valor almacenado en localStorage
                 for (let i = 0; i < departamentoSelect.options.length; i++) {
@@ -136,17 +136,17 @@ document.addEventListener("DOMContentLoaded", async () => {
                         break;
                     }
                 }
-            } */
+            }
         })
         .catch(error => {
             console.error("Error al obtener la lista de departamentos:", error);
-        });
+        }); */
 
 
     /* ---------------------CARGAR PROVINCIAS--------------------- */
     const provinciaSelect = document.getElementById("id_provincia");
 
-    departamentoSelect.addEventListener("change", async () => {
+    /* departamentoSelect.addEventListener("change", async () => {
         provinciaSelect.innerHTML = "";
         distritoSelect.innerHTML = "";
         createSeleccione(provinciaSelect);
@@ -181,12 +181,12 @@ document.addEventListener("DOMContentLoaded", async () => {
             .catch(error => {
                 console.error("Error al obtener la lista de provincias:", error);
             });
-    });
+    }); */
 
     /* ---------------------CARGAR DISTRITOS--------------------- */
     const distritoSelect = document.getElementById("id_distrito");
 
-    provinciaSelect.addEventListener("change", async () => {
+    /* provinciaSelect.addEventListener("change", async () => {
         distritoSelect.innerHTML = "";
 
         createSeleccione(distritoSelect);
@@ -221,10 +221,10 @@ document.addEventListener("DOMContentLoaded", async () => {
                 console.error("Error al obtener la lista de distritos:", error);
             });
 
-    });
+    }); */
 
     /* ---------------------CARGAR DEPENDENCIAS--------------------- */
-    const dependenciaSelect = document.querySelector("#id_dependencia");
+    /* const dependenciaSelect = document.querySelector("#id_dependencia");
     const urlDependencias = "https://munisayan.gob.pe/tramite/api/unidadOrganica";
 
     await fetch(urlDependencias, {
@@ -240,10 +240,10 @@ document.addEventListener("DOMContentLoaded", async () => {
         })
         .catch(error => {
             console.error("Error al obtener la lista de distritos:", error);
-        });
+        }); */
 
     /* ---------------------CARGAR TIPO DE EXPEDIENTE --------------------- */
-    const tipoExpedienteSelect = document.querySelector("#id_tipoDocumento");
+    /* const tipoExpedienteSelect = document.querySelector("#id_tipoDocumento");
     const urlTipoExpediente = "https://munisayan.gob.pe/tramite/api/tipoexpediente";
 
     await fetch(urlTipoExpediente, {
@@ -259,5 +259,5 @@ document.addEventListener("DOMContentLoaded", async () => {
         })
         .catch(error => {
             console.error("Error al obtener la lista de distritos:", error);
-        });
+        }); */
 });
